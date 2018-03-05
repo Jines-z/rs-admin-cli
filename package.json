@@ -1,0 +1,36 @@
+{
+  "name": "react-starter-kit",
+  "version": "1.0.0",
+  "description": "this is react start kit",
+  "author": "bevelery <zhengaojin@live.cn> (http://blog.csdn.net/beverley__)",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cross-env NODE_ENV=development node bin/start",
+    "build": "cross-env NODE_ENV=production node bin/build"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "object-assign": "^4.1.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.3",
+    "babel-plugin-react-transform": "^3.0.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "compression": "^1.7.2",
+    "cross-env": "^5.1.3",
+    "css-loader": "^0.28.10",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^2.24.1",
+    "less": "^3.0.1",
+    "less-loader": "^4.0.6",
+    "style-loader": "^0.20.2",
+    "webpack": "^3.8.1",
+    "webpack-dev-middleware": "^2.0.6",
+    "webpack-dev-server": "^3.0.0",
+    "webpack-hot-middleware": "^2.21.0"
+  }
+}
