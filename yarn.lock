@@ -3466,7 +3466,7 @@ once@^1.3.0, once@^1.3.3:
   dependencies:
     wrappy "1"
 
-opn@^5.1.0:
+opn@^5.1.0, opn@^5.2.0:
   version "5.2.0"
   resolved "http://registry.npm.taobao.org/opn/download/opn-5.2.0.tgz#71fdf934d6827d676cecbea1531f95d354641225"
   dependencies:

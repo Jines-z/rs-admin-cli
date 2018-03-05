@@ -27,6 +27,7 @@
     "html-webpack-plugin": "^2.24.1",
     "less": "^3.0.1",
     "less-loader": "^4.0.6",
+    "opn": "^5.2.0",
     "style-loader": "^0.20.2",
     "webpack": "^3.8.1",
     "webpack-dev-middleware": "^2.0.6",
