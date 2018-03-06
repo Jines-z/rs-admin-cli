@@ -1,3 +1,19 @@
 {
-  "presets": ["react", "env"]
+  "presets": [
+    "react",
+    [
+      "env",
+      {
+        "modules": false,
+        "targets": {
+          "browsers": ["last 2 versions", "ie >= 7"]
+        }
+      }
+    ]
+  ],
+  "plugins": [
+    "transform-runtime",
+    "transform-class-properties",
+    "transform-object-rest-spread"
+  ]
 }

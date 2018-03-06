@@ -11,14 +11,13 @@ app.use(compress())
 
 const DIST_DIR = path.join(__dirname, "dist")
 const compiler = webpack(webpackConfig)
-const PORT = 8080
 
 const devMiddleware = webpackDevMiddleware(compiler, {
-    hot         : true,
-    quiet       : false,
-    noInfo      : false,
-    lazy        : false,
-    stats       : 'normal',
+    hot    : true,
+    quiet  : false,
+    noInfo : false,
+    lazy   : false,
+    stats  : 'normal',
 })
 
 const hotMiddleware = webpackHotMiddleware(compiler, {

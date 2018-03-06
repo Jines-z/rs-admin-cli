@@ -10,47 +10,53 @@ const devtool = project.sourceMap ? 'source-map' : false
 
 const config = {
     entry: {
-        main   : [project.basePath + "/app/main.js"],
+        main   : [path.join(project.basePath, project.srcDir)],
         vendor : project.vendor
     },
     output: {
-        path     : path.resolve(project.basePath, project.outDir),
-        filename : envDevelopment ? '[name].js' : "[name].[chunkhash:5].js",
+        path      : path.resolve(project.basePath, project.outDir),
+        filename  : envDevelopment ? 'js/[name].js' : "js/[name].[chunkhash:5].js",
         publicPath: project.publicPath
     },
     devtool: devtool,
+    resolve: {
+        modules: [
+            project.srcDir,
+            'node_modules',
+        ],
+        extensions: ['*', '.js', '.jsx', '.json', 'less', 'css'],
+    },
     module : {
         rules: [
             {
                 test: /(\.jsx|\.js)$/,
-                use: {
+                use : {
                     loader: "babel-loader"
                 },
                 exclude: /node_modules/
             },
             {
                 test: /\.(less|css)$/,
-                use: ExtractTextPlugin.extract({
+                use : ExtractTextPlugin.extract({
                     use: [
                         {
-                            loader: 'css-loader',
+                            loader : 'css-loader',
                             options: {
-                                modules        : true,
                                 importLoaders  : 1,
                                 localIdentName : '[local]',
                                 minimize: {
                                     autoprefixer: {
-                                        add: true,
-                                        remove: true,
+                                        add     : true,
+                                        remove  : true,
                                         browsers: ['last 2 versions'],
                                     },
                                     discardComments: {
                                         removeAll : true,
                                     },
                                     discardUnused: false,
-                                    mergeIdents: false,
-                                    reduceIdents: false,
-                                    safe: true
+                                    mergeIdents  : false,
+                                    reduceIdents : false,
+                                    safe         : true,
                                 },
                             }
                         },
@@ -62,11 +68,12 @@ const config = {
                 }),
             },
             {
-                test    : /\.(png|jpg|gif)$/,
+                test    : /\.(png|jpe?g|gif|svg|jpg)(\?.*)?$/,
                 loader  : 'url-loader',
                 options : {
-                    limit : 8192,
-                },
+                    limit: 10000,
+                    outputPath: "images"
+                }
             }
         ]
     },
@@ -85,8 +92,8 @@ const config = {
             chunksSortMode: 'dependency'
         }),
         new ExtractTextPlugin({
-            filename : 'index.css',
-            disable  : false,
+            filename : 'css/[name].[contenthash:5].css',
+            disable  : envDevelopment,
             allChunks: true,
         }),
         new webpack.optimize.CommonsChunkPlugin({
@@ -94,6 +101,28 @@ const config = {
         })
     ],
 }
+
+;[
+    ['woff', 'application/font-woff'],
+    ['woff2', 'application/font-woff2'],
+    ['otf', 'font/opentype'],
+    ['ttf', 'application/octet-stream'],
+    ['eot', 'application/vnd.ms-fontobject'],
+    ['svg', 'image/svg+xml'],
+].forEach((font) => {
+    const extension = font[0]
+    const mimetype = font[1]
+
+    config.module.rules.push({
+        test    : new RegExp(`\\.${extension}$`),
+        loader  : 'url-loader',
+        options : {
+            name  : 'fonts/[name].[ext]',
+            limit : 10000,
+            mimetype,
+        },
+    })
+})
 
 if (envDevelopment) {
     config.entry.main.push(
@@ -112,7 +141,7 @@ if (envProduction) {
             debug    : false,
         }),
         new webpack.optimize.UglifyJsPlugin({
-            sourceMap: false,
+            sourceMap: project.sourceMap,
             comments : false,
             compress : {
                 warnings     : false,
@@ -126,7 +155,7 @@ if (envProduction) {
                 if_return    : true,
                 join_vars    : true,
                 drop_debugger: true,
-                drop_console: true
+                drop_console : true
             }
         })
     )
