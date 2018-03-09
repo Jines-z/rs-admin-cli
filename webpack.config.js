@@ -10,9 +10,9 @@ const devtool = project.sourceMap ? 'source-map' : false
 
 const config = {
     entry: {
-        normalize:[path.join(project.basePath, project.srcDir, 'normalize')],
-        main   : [path.join(project.basePath, project.srcDir)],
-        vendor : project.vendor
+        normalize : [path.join(project.basePath, project.srcDir, 'normalize')],
+        main      : [path.join(project.basePath, project.srcDir)],
+        vendor    : project.vendor
     },
     output: {
         path      : path.resolve(project.basePath, project.outDir),
@@ -98,7 +98,7 @@ const config = {
             allChunks: true,
         }),
         new webpack.optimize.CommonsChunkPlugin({
-            names: ['normalize', 'vendor', 'manifest']
+            names: ['vendor', 'normalize', 'manifest']
         })
     ],
 }
