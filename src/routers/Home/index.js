@@ -5,7 +5,7 @@ class Home extends Component {
     render() {
         return (
             <div className='root'>
-                <span>3256asdasda465</span>
+                <span>asdadaasdadas</span>
                 <img src={a} alt=""/>
                 <div className="veer"></div>
                 <span className='iconfont icon-arrow-down'></span>

@@ -10,6 +10,7 @@ const devtool = project.sourceMap ? 'source-map' : false
 
 const config = {
     entry: {
+        normalize:[path.join(project.basePath, project.srcDir, 'normalize')],
         main   : [path.join(project.basePath, project.srcDir)],
         vendor : project.vendor
     },
@@ -24,7 +25,7 @@ const config = {
             project.srcDir,
             'node_modules',
         ],
-        extensions: ['*', '.js', '.jsx', '.json', 'less', 'css'],
+        extensions: ['*', '.js', '.jsx', '.json', 'less', 'css']
     },
     module : {
         rules: [
@@ -68,7 +69,7 @@ const config = {
                 }),
             },
             {
-                test    : /\.(png|jpe?g|gif|svg|jpg)(\?.*)?$/,
+                test    : /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader  : 'url-loader',
                 options : {
                     limit: 10000,
@@ -86,10 +87,10 @@ const config = {
         new HtmlWebpackPlugin({
             template : 'index.html',
             inject   : true,
+            favicon: path.resolve('favicon.ico'),
             minify   : {
                 collapseWhitespace: true,
-            },
-            chunksSortMode: 'dependency'
+            }
         }),
         new ExtractTextPlugin({
             filename : 'css/[name].[contenthash:5].css',
@@ -97,22 +98,15 @@ const config = {
             allChunks: true,
         }),
         new webpack.optimize.CommonsChunkPlugin({
-            names: ['vendor', 'manifest']
+            names: ['normalize', 'vendor', 'manifest']
         })
     ],
 }
 
-;[
-    ['woff', 'application/font-woff'],
-    ['woff2', 'application/font-woff2'],
-    ['otf', 'font/opentype'],
-    ['ttf', 'application/octet-stream'],
-    ['eot', 'application/vnd.ms-fontobject'],
-    ['svg', 'image/svg+xml'],
-].forEach((font) => {
-    const extension = font[0]
-    const mimetype = font[1]
-
+const fontLoader = [['woff', 'application/font-woff'], ['woff2', 'application/font-woff2'], ['otf', 'font/opentype'], ['ttf', 'application/octet-stream'], ['eot', 'application/vnd.ms-fontobject'], ['svg', 'image/svg+xml']]
+fontLoader.forEach((font) => {
+    let extension = font[0]
+    let mimetype = font[1]
     config.module.rules.push({
         test    : new RegExp(`\\.${extension}$`),
         loader  : 'url-loader',
@@ -136,6 +130,7 @@ if (envDevelopment) {
 
 if (envProduction) {
     config.plugins.push(
+        new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.LoaderOptionsPlugin({
             minimize : true,
             debug    : false,

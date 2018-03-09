@@ -13,11 +13,10 @@ const DIST_DIR = path.join(__dirname, "dist")
 const compiler = webpack(webpackConfig)
 
 const devMiddleware = webpackDevMiddleware(compiler, {
-    hot    : true,
     quiet  : false,
     noInfo : false,
     lazy   : false,
-    stats  : 'normal',
+    stats  : 'errors-only',
 })
 
 const hotMiddleware = webpackHotMiddleware(compiler, {
