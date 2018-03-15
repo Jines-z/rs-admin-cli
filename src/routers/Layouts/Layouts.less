@@ -1,0 +1,33 @@
+@import (once) 'base';
+@import (once) '../../fonts/iconfont.css';
+
+.Layouts_wrap {
+    width: 100%;
+    height: 100%;
+    > div {
+        height: 100%;
+    }
+    .left {
+        float: left;
+        width: 240px;
+        background-color: #495060;
+        .logo{
+            width:239px;
+            height:60px;
+            box-shadow: 0 3px 3px #363e4f;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+            img{
+                width:85%;
+            }
+        }
+    }
+    .right {
+        overflow: hidden;
+        .header {
+            height:60px;
+            box-shadow: 0 2px 5px #e4e4e4;
+        }
+    }
+}

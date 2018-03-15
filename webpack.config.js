@@ -25,7 +25,7 @@ const config = {
             project.srcDir,
             'node_modules',
         ],
-        extensions: ['*', '.js', '.jsx', '.json', 'less', 'css']
+        extensions: ['*', '.js', '.jsx', '.json', '.less', '.css']
     },
     module : {
         rules: [
@@ -35,38 +35,6 @@ const config = {
                     loader: "babel-loader"
                 },
                 exclude: /node_modules/
-            },
-            {
-                test: /\.(less|css)$/,
-                use : ExtractTextPlugin.extract({
-                    use: [
-                        {
-                            loader : 'css-loader',
-                            options: {
-                                importLoaders  : 1,
-                                localIdentName : '[local]',
-                                minimize: {
-                                    autoprefixer: {
-                                        add     : true,
-                                        remove  : true,
-                                        browsers: ['last 2 versions'],
-                                    },
-                                    discardComments: {
-                                        removeAll : true,
-                                    },
-                                    discardUnused: false,
-                                    mergeIdents  : false,
-                                    reduceIdents : false,
-                                    safe         : true,
-                                },
-                            }
-                        },
-                        {
-                            loader: 'less-loader',
-                        },
-                    ],
-                    fallback: 'style-loader',
-                }),
             },
             {
                 test    : /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -87,20 +55,16 @@ const config = {
         new HtmlWebpackPlugin({
             template : 'index.html',
             inject   : true,
-            favicon: path.resolve('favicon.ico'),
+            favicon  : path.resolve('favicon.ico'),
             minify   : {
                 collapseWhitespace: true,
             }
         }),
-        new ExtractTextPlugin({
-            filename : 'css/[name].[contenthash:5].css',
-            disable  : envDevelopment,
-            allChunks: true,
-        }),
+
         new webpack.optimize.CommonsChunkPlugin({
             names: ['vendor', 'normalize', 'manifest']
         })
-    ],
+    ]
 }
 
 const fontLoader = [['woff', 'application/font-woff'], ['woff2', 'application/font-woff2'], ['otf', 'font/opentype'], ['ttf', 'application/octet-stream'], ['eot', 'application/vnd.ms-fontobject'], ['svg', 'image/svg+xml']]
@@ -119,6 +83,19 @@ fontLoader.forEach((font) => {
 })
 
 if (envDevelopment) {
+    config.module.rules.push({
+        test: /(\.less|\.css)$/,
+        use: [{
+            loader: "style-loader"
+        }, {
+            loader: "css-loader"
+        }, {
+            loader: "less-loader",
+            options: {
+                javascriptEnabled: true
+            }
+        }]
+    })
     config.entry.main.push(
         'webpack-hot-middleware/client?path=./__webpack_hmr'
     )
@@ -129,12 +106,48 @@ if (envDevelopment) {
 }
 
 if (envProduction) {
+    config.module.rules.push({
+        test: /(\.less|\.css)$/,
+        use : ExtractTextPlugin.extract({
+            use: [
+                {
+                    loader : 'css-loader',
+                    options: {
+                        importLoaders  : 1,
+                        localIdentName : '[local]',
+                        minimize: {
+                            autoprefixer: {
+                                add     : true,
+                                remove  : true,
+                                browsers: ['last 2 versions'],
+                            },
+                            discardComments : {
+                                removeAll : true,
+                            },
+                            discardUnused: false,
+                            mergeIdents  : false,
+                            reduceIdents : false,
+                            safe         : true,
+                        },
+                    }
+                },
+                {
+                    loader: 'less-loader',
+                    options: {
+                        javascriptEnabled: true
+                    }
+                },
+            ],
+            fallback: 'style-loader',
+        })
+    })
     config.plugins.push(
-        new webpack.optimize.ModuleConcatenationPlugin(),
-        new webpack.LoaderOptionsPlugin({
-            minimize : true,
-            debug    : false,
+        new ExtractTextPlugin({
+            filename : 'css/[name].[contenthash:5].css',
+            disable  : envDevelopment,
+            allChunks: true,
         }),
+        new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.optimize.UglifyJsPlugin({
             sourceMap: project.sourceMap,
             comments : false,

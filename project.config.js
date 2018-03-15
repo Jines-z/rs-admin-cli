@@ -8,5 +8,5 @@ module.exports = {
     publicPath : './',
     sourceMap  : false,
     externals  : {},
-    vendor     : ['react', 'react-dom']
+    vendor     : ['react', 'react-dom', 'react-router-dom']
 }
