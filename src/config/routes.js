@@ -1,18 +1,21 @@
-import Home from '../routers/Home'
-import ModuleList from '../routers/ModuleManage/ModuleList'
-import FunctionList from '../routers/FunctionManage/FunctionList'
-import RoleList from '../routers/RoleManage/RoleList'
-import EmployeesList from '../routers/EmployeesManage/EmployeesList'
-import UserList from '../routers/UserManage/UserList'
-import UserOrder from '../routers/UserManage/UserOrder'
-import UserManager from '../routers/UserManage/UserManager'
-import EndOrder from '../routers/UserManage/EndOrder'
-import VisualList from '../routers/VisualManage/VisualList'
-import PriceConfig from '../routers/PriceManage/PriceConfig'
+import Loadable from 'react-loadable';
+import Loading from '../components/Loading'
+const Home         = Loadable({loader: () => import('../routers/Home'), loading : Loading,delay:3000})
+const ModuleList   = Loadable({loader: () => import('../routers/ModuleManage/ModuleList'), loading : Loading,delay:3000})
+const FunctionList = Loadable({loader: () => import('../routers/FunctionManage/FunctionList'), loading : Loading,delay:3000})
+const RoleList     = Loadable({loader: () => import('../routers/RoleManage/RoleList'), loading : Loading,delay:3000})
+const EmployeesList= Loadable({loader: () => import('../routers/EmployeesManage/EmployeesList'), loading : Loading,delay:3000})
+const UserList     = Loadable({loader: () => import('../routers/UserManage/UserList'), loading : Loading,delay:3000})
+const UserOrder    = Loadable({loader: () => import('../routers/UserManage/UserOrder'), loading : Loading,delay:3000})
+const UserManager  = Loadable({loader: () => import('../routers/UserManage/UserManager'), loading : Loading,delay:3000})
+const EndOrder     = Loadable({loader: () => import('../routers/UserManage/EndOrder'), loading : Loading,delay:3000})
+const VisualList   = Loadable({loader: () => import('../routers/VisualManage/VisualList'), loading : Loading,delay:3000})
+const PriceConfig  = Loadable({loader: () => import('../routers/PriceManage/PriceConfig'), loading : Loading,delay:3000})
+
 
 export default
 [{
-    'path': '/home',
+    'path': '/',
     'component': Home,
     'exactly': true
 }, {

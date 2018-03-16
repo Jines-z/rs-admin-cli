@@ -1,9 +1,10 @@
 import React from 'react'
 import {render} from 'react-dom'
-import Routers from './routers'
+import { HashRouter } from 'react-router-dom';
+import routers from './routers'
 const App = () =>{
     return (
-        <Routers></Routers>
+        <HashRouter children={routers}></HashRouter>
     )
 }
 

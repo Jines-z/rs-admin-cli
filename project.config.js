@@ -6,7 +6,7 @@ module.exports = {
     srcDir     : 'src',
     outDir     : 'dist',
     publicPath : './',
-    sourceMap  : false,
+    sourceMap  : NODE_ENV == 'development' ? true : false,
     externals  : {},
-    vendor     : ['react', 'react-dom', 'react-router-dom']
+    vendor     : ['react', 'react-dom', 'react-router-dom', 'react-loadable']
 }
