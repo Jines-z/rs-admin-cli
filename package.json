@@ -12,6 +12,8 @@
   "license": "MIT",
   "dependencies": {
     "antd": "^3.3.0",
+    "mobx": "^4.1.0",
+    "mobx-react": "^5.0.0",
     "object-assign": "^4.1.1",
     "promise": "^8.0.1",
     "react": "^16.2.0",

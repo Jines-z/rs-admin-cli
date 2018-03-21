@@ -1,16 +1,13 @@
 import React from 'react'
-const  Loading = ({ isLoading, error }) => {
-    // Handle the loading state
-    if (isLoading) {
+const  Loading = (a) => {
+    // console.log(a)
+    if (a.pastDelay) {
         return <div>Loading...</div>
-    }
-    // Handle the error state
-    else if (error) {
+    } else if (a.error) {
         return <div>Sorry, there was a problem loading the page.</div>;
-    }
-    else {
+    } else {
         return null;
     }
-};
+}
 
 export default Loading

@@ -1,14 +1,20 @@
 import React from 'react'
 import {render} from 'react-dom'
-import { HashRouter } from 'react-router-dom';
-import routers from './routers'
-const App = () =>{
-    return (
-        <HashRouter children={routers}></HashRouter>
-    )
+import {HashRouter} from 'react-router-dom';
+import Routers from './routers'
+
+
+class App extends React.Component {
+    render() {
+        return (
+            <HashRouter>
+                <Routers></Routers>
+            </HashRouter>
+        )
+    }
 }
 
-render(<App />, document.getElementById('root'))
+render(<App/>, document.getElementById('root'))
 
 if (module.hot) {
     module.hot.accept();

@@ -5,6 +5,7 @@
       "env",
       {
         "modules": false,
+        "useBuiltIns": false,
         "targets": {
           "browsers": ["last 2 versions", "ie >= 7"]
         }
@@ -12,10 +13,10 @@
     ]
   ],
   "plugins": [
-    "transform-runtime",
-    "transform-class-properties",
-    "transform-object-rest-spread",
     "transform-decorators-legacy",
+    "transform-class-properties",
+    "transform-runtime",
+    "transform-object-rest-spread",
     "babel-plugin-syntax-dynamic-import",
     ["import", { "libraryName": "antd", "style": "css" }]
   ]

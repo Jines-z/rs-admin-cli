@@ -3085,6 +3085,16 @@ mixin-deep@^1.2.0:
   dependencies:
     minimist "0.0.8"
 
+mobx-react@^5.0.0:
+  version "5.0.0"
+  resolved "http://registry.npm.taobao.org/mobx-react/download/mobx-react-5.0.0.tgz#8d5a33be376fa22b184a6f555d40a6a3a8459a16"
+  dependencies:
+    hoist-non-react-statics "^2.3.1"
+
+mobx@^4.1.0:
+  version "4.1.0"
+  resolved "http://registry.npm.taobao.org/mobx/download/mobx-4.1.0.tgz#e4a9679cdafbe215b20e32ef93a7031845b3f1af"
+
 moment@2.x, moment@^2.19.3:
   version "2.21.0"
   resolved "http://registry.npm.taobao.org/moment/download/moment-2.21.0.tgz#2a114b51d2a6ec9e6d83cf803f838a878d8a023a"

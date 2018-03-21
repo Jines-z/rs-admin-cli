@@ -8,5 +8,5 @@ module.exports = {
     publicPath : './',
     sourceMap  : NODE_ENV == 'development' ? true : false,
     externals  : {},
-    vendor     : ['react', 'react-dom', 'react-router-dom', 'react-loadable']
+    vendor     : ['react', 'react-dom', 'react-router-dom', 'react-loadable', 'mobx', 'mobx-react']
 }

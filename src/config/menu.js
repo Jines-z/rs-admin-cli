@@ -1,6 +1,6 @@
 export default
 [{
-    key   : '/',
+    key   : '/home',
     title : '首页',
     icon  : 'home'
 },{

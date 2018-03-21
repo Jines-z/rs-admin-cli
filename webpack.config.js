@@ -8,10 +8,12 @@ const envDevelopment = project.env === 'development'
 const envProduction = project.env === 'production'
 const devtool = project.sourceMap ? 'source-map' : false
 
+const SRC_DIR = path.join(project.basePath, project.srcDir)
+
 const config = {
     entry: {
         normalize : [path.join(project.basePath, project.srcDir, 'normalize')],
-        main      : [path.join(project.basePath, project.srcDir)],
+        main      : [SRC_DIR],
         vendor    : project.vendor
     },
     output: {
@@ -25,6 +27,9 @@ const config = {
             project.srcDir,
             'node_modules',
         ],
+        alias: {
+            '@': SRC_DIR
+        },
         extensions: ['*', '.js', '.jsx', '.json', '.less', '.css']
     },
     module : {
@@ -60,7 +65,6 @@ const config = {
                 collapseWhitespace: true,
             }
         }),
-
         new webpack.optimize.CommonsChunkPlugin({
             names: ['vendor', 'normalize', 'manifest']
         })
@@ -100,6 +104,7 @@ if (envDevelopment) {
         'webpack-hot-middleware/client?path=./__webpack_hmr'
     )
     config.plugins.push(
+        new webpack.NoEmitOnErrorsPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin()
     )
