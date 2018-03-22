@@ -4,7 +4,7 @@
     background-color: #F2F2F2;
     .form{
         width:515px;
-        height:480px;
+        height:400px;
         background-color: #fff;
         border-radius: 10px;
         text-align: center;
@@ -19,6 +19,20 @@
             .font{
                 font-size:12px;
                 font-weight:800;
+            }
+            .ant-btn-primary{
+                width:100%;
+                background-color: #495060;
+                border-color: #495060;
+                &:hover{
+                    opacity:.95;
+                }
+            }
+            .ant-btn-clicked:after {
+                border: 0 solid #495060;
+            }
+            .ant-btn-loading:before{
+                display: none;
             }
         }
     }

@@ -2,11 +2,18 @@ import React, {Component} from 'react'
 import { Route,withRouter } from 'react-router-dom'
 import {observer, inject} from 'mobx-react'
 import routerConfig from '@/config/routes'
+import cookie from '@/config/cookie'
 
 @withRouter
 @inject('Store')
 @observer
 class Right extends Component {
+    componentWillMount(){
+        let {userInfo,updateName} = this.props.Store
+        if (userInfo.name == '') {
+            updateName(cookie.get().userName)
+        }
+    }
     render() {
         const {name} = this.props.Store.userInfo
         return (

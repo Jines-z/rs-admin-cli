@@ -6,7 +6,7 @@ const project = require('./project.config.js')
 
 const envDevelopment = project.env === 'development'
 const envProduction = project.env === 'production'
-const devtool = project.sourceMap ? 'source-map' : false
+const devtool = project.sourceMap ? 'cheap-source-map' : false
 
 const SRC_DIR = path.join(project.basePath, project.srcDir)
 
@@ -37,8 +37,9 @@ const config = {
             {
                 test: /(\.jsx|\.js)$/,
                 use : {
-                    loader: "babel-loader"
+                    loader: 'babel-loader'
                 },
+                include: SRC_DIR,
                 exclude: /node_modules/
             },
             {

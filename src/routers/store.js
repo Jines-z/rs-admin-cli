@@ -2,7 +2,7 @@ import {observable, action} from 'mobx'
 
 class Store {
     @observable userInfo = {
-        name : 'admin'
+        name : ''
     }
     @action updateName = (name) => {
         this.userInfo.name = name

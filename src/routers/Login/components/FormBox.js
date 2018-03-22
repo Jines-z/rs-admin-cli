@@ -1,46 +1,43 @@
 import React, {Component} from 'react'
-import { Form, Input, Button, Checkbox } from 'antd'
+import { Form, Input, Button } from 'antd'
+import {inject, observer} from 'mobx-react'
 const FormItem = Form.Item
 
+@inject('store')
+@observer
 class FromBox extends Component {
+    constructor(){
+        super()
+    }
     handleSubmit = (e) => {
-        e.preventDefault();
-        this.props.form.validateFields((err, values) => {
-            if (!err) {
-                console.log('Received values of form: ', values);
-            }
-        });
+        e.preventDefault()
+        let {updateLoading} = this.props.store
+        let {form} = this.props
+        this.props.submit(form,updateLoading)
     }
     render(){
-        const { getFieldDecorator } = this.props.form;
+        const { getFieldDecorator } = this.props.form
+        const { loading } = this.props.store
         return (
             <Form onSubmit={this.handleSubmit}>
                 <FormItem>
                     {getFieldDecorator('userName', {
-                        rules: [{ required: true, message: 'Please input your username!' }],
+                        rules: [{ required: true, message: '输入admin' }],
                     })(
                         <Input prefix={<span className='font icon-user' style={{ color: 'rgba(0,0,0,.25)' }}></span>} placeholder="admin" />
                     )}
                 </FormItem>
                 <FormItem>
                     {getFieldDecorator('password', {
-                        rules: [{ required: true, message: 'Please input your Password!' }],
+                        rules: [{ required: true, message: '密码是123456' }],
                     })(
                         <Input prefix={<span className='font icon-mima' style={{ color: 'rgba(0,0,0,.25)' }}></span>} type="password" placeholder="123456" />
                     )}
                 </FormItem>
                 <FormItem>
-                    {getFieldDecorator('remember', {
-                        valuePropName: 'checked',
-                        initialValue: true,
-                    })(
-                        <Checkbox>Remember me</Checkbox>
-                    )}
-                    <a className="login-form-forgot" href="">Forgot password</a>
-                    <Button type="primary" htmlType="submit" className="login-form-button">
-                        Log in
+                    <Button type="primary" htmlType="submit" className="l_button" loading={loading}>
+                        登录
                     </Button>
-                    Or <a href="">register now!</a>
                 </FormItem>
             </Form>
         )

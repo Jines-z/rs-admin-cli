@@ -1,13 +1,11 @@
 import React from 'react'
-const  Loading = (a) => {
-    // console.log(a)
-    if (a.pastDelay) {
+const  Loading = ({pastDelay, error}) => {
+    if (pastDelay) {
         return <div>Loading...</div>
-    } else if (a.error) {
+    } else if (error) {
         return <div>Sorry, there was a problem loading the page.</div>;
     } else {
         return null;
     }
 }
-
 export default Loading
