@@ -11,7 +11,7 @@ import './index.less'
 class Login extends Component {
     constructor(){
         super()
-        this.store = new store()
+        this.store = new store() // 在这里实例化，保证每次加载组件数据的初始化。
     }
     submit = (form,updateLoading) =>{
         form.validateFields((err, values) => {
