@@ -30,9 +30,11 @@ class Right extends Component {
                         </Tooltip>
                     </div>
                 </div>
-                {routerConfig.map((item,i)=>
-                    <Route key={i} path={item.path} component={item.component} exact/>
-                )}
+                <div className='routeWrap'>
+                    {routerConfig.map((item,i)=>
+                        <Route key={i} path={item.path} component={item.component} exact/>
+                    )}
+                </div>
             </div>
         )
     }

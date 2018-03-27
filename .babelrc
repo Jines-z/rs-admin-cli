@@ -6,8 +6,9 @@
       {
         "modules": false,
         "useBuiltIns": false,
+        "uglify": true,
         "targets": {
-          "browsers": ["last 2 versions", "ie >= 7"]
+          "browsers": ["last 2 versions"]
         }
       }
     ]
@@ -15,9 +16,9 @@
   "plugins": [
     "transform-decorators-legacy",
     "transform-class-properties",
-    "transform-runtime",
-    "transform-object-rest-spread",
-    "babel-plugin-syntax-dynamic-import",
+    "syntax-dynamic-import",
+    ["transform-runtime",{"polyfill": false}],
+    ["transform-object-rest-spread",{"useBuiltIns": true}],
     ["import", { "libraryName": "antd", "style": "css" }]
   ]
 }

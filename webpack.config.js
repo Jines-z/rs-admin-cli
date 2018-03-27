@@ -37,7 +37,7 @@ const config = {
             {
                 test: /(\.jsx|\.js)$/,
                 use : {
-                    loader: 'babel-loader'
+                    loader: 'babel-loader?cacheDirectory'
                 },
                 include: SRC_DIR,
                 exclude: /node_modules/
