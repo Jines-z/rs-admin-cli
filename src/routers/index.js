@@ -4,7 +4,7 @@ import {Provider} from 'mobx-react'
 import Layouts from './Layouts'
 import Login from './Login'
 import store from './store'
-import cookie from '@/config/cookie'
+import Cookies from 'js-cookie'
 
 @withRouter
 class Routers extends Component {
@@ -14,18 +14,18 @@ class Routers extends Component {
     }
     checkJsessionID = () =>{
         if (this.props.location.pathname != '/login') {
-            if (!cookie.get().JSESSIONID) {
+            if (!Cookies.get('JSESSIONID')) {
                 this.props.history.replace('/login')
             }
         } else {
-            if (cookie.get().JSESSIONID) {
+            if (Cookies.get('JSESSIONID')) {
                 this.props.history.replace('/home')
             }
         }
     }
     componentWillMount(){
         if (this.pathname == '/') {
-            if (cookie.get().JSESSIONID) {
+            if (Cookies.get('JSESSIONID')) {
                 this.props.history.replace('/home')
             } else {
                 this.props.history.replace('/login')

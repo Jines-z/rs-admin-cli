@@ -3,7 +3,7 @@ import { Route, withRouter } from 'react-router-dom'
 import {observer, inject} from 'mobx-react'
 import {Tooltip} from 'antd'
 import routerConfig from '@/config/routes'
-import cookie from '@/config/cookie'
+import Cookies from 'js-cookie'
 import Loading from '@/components/Loading'
 
 @withRouter
@@ -13,7 +13,7 @@ class Right extends Component {
     componentWillMount(){
         let {userInfo,updateName} = this.props.Store
         if (userInfo.name == '') {
-            updateName(cookie.get().userName)
+            updateName(Cookies.get('userName'))
         }
     }
     logout = () =>{
