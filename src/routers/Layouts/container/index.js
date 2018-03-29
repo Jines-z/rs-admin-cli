@@ -2,11 +2,12 @@ import React, {Component} from 'react'
 import Left from '../components/Left'
 import Right from '../components/Right'
 import './index.less'
-import cookie from '@/config/cookie'
+import Cookies from 'js-cookie'
 
 class Layouts extends Component {
     logout = () =>{
-        cookie.clearAll()
+        Cookies.remove('JSESSIONID', { path: '/' })
+        Cookies.remove('userName', { path: '/' })
         this.props.history.replace('/login')
     }
     render() {

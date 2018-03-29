@@ -3,7 +3,7 @@ import {Provider, inject, observer} from 'mobx-react'
 import {message} from 'antd'
 import CryptoJS from 'crypto-js'
 import FormBox from '../components/FormBox'
-import cookie from '@/config/cookie'
+import Cookies from 'js-cookie'
 import store from '../store'
 import './index.less'
 
@@ -26,18 +26,8 @@ class Login extends Component {
                         let message = `M&${userName}&${password}`
                         let key = 'react_starter'
                         let session = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA1(message, key))
-                        cookie.set({
-                            name: 'JSESSIONID',
-                            value: session,
-                            path: '/',
-                            day: 1
-                        })
-                        cookie.set({
-                            name: 'userName',
-                            value: userName,
-                            path: '/',
-                            day: 1
-                        })
+                        Cookies.set('JSESSIONID', session, { expires: 1, path: '/' });
+                        Cookies.set('userName', userName, { expires: 1, path: '/' });
                         this.props.Store.updateName(userName)
                         this.props.history.push('/home')
                     } else {

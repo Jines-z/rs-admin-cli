@@ -9,9 +9,11 @@ import './index.less'
 @observer
 class Loading extends Component {
     componentDidUpdate(){
-        setTimeout(()=>{
-            this.props.Store.updateLoading(false)
-        },500)
+        if (this.props.Store.loading) {
+            setTimeout(()=>{
+                this.props.Store.updateLoading(false)
+            },500)
+        }
     }
     componentWillReceiveProps(){
         this.props.Store.updateLoading(true)
