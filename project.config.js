@@ -5,6 +5,7 @@ module.exports = {
     basePath   : __dirname,
     srcDir     : 'src',
     outDir     : 'dist',
+    // publicPath : 'https://beverle-y.github.io/react-starter-kit/',
     publicPath : './',
     sourceMap  : NODE_ENV == 'development' ? true : false,
     externals  : {},
