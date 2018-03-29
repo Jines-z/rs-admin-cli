@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Provider, inject, observer} from 'mobx-react'
+import {message} from 'antd'
 import CryptoJS from 'crypto-js'
 import FormBox from '../components/FormBox'
 import cookie from '@/config/cookie'
@@ -9,11 +10,12 @@ import './index.less'
 @inject('Store')
 @observer
 class Login extends Component {
-    constructor(){
+    constructor() {
         super()
         this.store = new store() // 在这里实例化，保证每次加载组件数据的初始化。
     }
-    submit = (form,updateLoading) =>{
+
+    submit = (form, updateLoading) => {
         form.validateFields((err, values) => {
             if (!err) {
                 updateLoading(true)
@@ -38,14 +40,18 @@ class Login extends Component {
                         })
                         this.props.Store.updateName(userName)
                         this.props.history.push('/home')
+                    } else {
+                        message.error('账号：admin ； 密码：123456')
                     }
                 }, 1500)
             }
         });
     }
-    componentWillUnmount(){
+
+    componentWillUnmount() {
         clearTimeout(this.timer)
     }
+
     render() {
         return (
             <Provider store={this.store}>
