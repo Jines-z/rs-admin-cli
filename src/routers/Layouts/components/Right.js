@@ -4,6 +4,7 @@ import {observer, inject} from 'mobx-react'
 import {Tooltip} from 'antd'
 import routerConfig from '@/config/routes'
 import cookie from '@/config/cookie'
+import Loading from '@/components/Loading'
 
 @withRouter
 @inject('Store')
@@ -31,9 +32,11 @@ class Right extends Component {
                     </div>
                 </div>
                 <div className='routeWrap'>
-                    {routerConfig.map((item,i)=>
-                        <Route key={i} path={item.path} component={item.component} exact/>
-                    )}
+                    <Loading>
+                        {routerConfig.map((item,i)=>
+                            <Route key={i} path={item.path} component={item.component} exact/>
+                        )}
+                    </Loading>
                 </div>
             </div>
         )

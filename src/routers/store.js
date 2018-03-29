@@ -15,8 +15,12 @@ class Store {
     @observable userInfo = {
         name : ''
     }
+    @observable loading = false
     @action updateName = (name) => {
         this.userInfo.name = name
+    }
+    @action updateLoading = (boolean) => {
+        this.loading = boolean
     }
 }
 

@@ -19,6 +19,6 @@
     "syntax-dynamic-import",
     ["transform-runtime",{"polyfill": false}],
     ["transform-object-rest-spread",{"useBuiltIns": true}],
-    ["import", { "libraryName": "antd", "style": "css" }]
+    ["import", { "libraryName": "antd", "style": true }]
   ]
 }

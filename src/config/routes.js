@@ -1,17 +1,17 @@
 import Loadable from 'react-loadable'
-import Loading from '../components/Loading'
+import DelayLoading from '../components/DelayLoading'
 
-const Home         = Loadable({loader: () => import('../routers/Home'), loading : Loading,delay:3000})
-const ModuleList   = Loadable({loader: () => import('../routers/ModuleManage/ModuleList'), loading : Loading,delay:3000})
-const FunctionList = Loadable({loader: () => import('../routers/FunctionManage/FunctionList'), loading : Loading,delay:3000})
-const RoleList     = Loadable({loader: () => import('../routers/RoleManage/RoleList'), loading : Loading,delay:3000})
-const EmployeesList= Loadable({loader: () => import('../routers/EmployeesManage/EmployeesList'), loading : Loading,delay:3000})
-const UserList     = Loadable({loader: () => import('../routers/UserManage/UserList'), loading : Loading,delay:3000})
-const UserOrder    = Loadable({loader: () => import('../routers/UserManage/UserOrder'), loading : Loading,delay:3000})
-const UserManager  = Loadable({loader: () => import('../routers/UserManage/UserManager'), loading : Loading,delay:3000})
-const EndOrder     = Loadable({loader: () => import('../routers/UserManage/EndOrder'), loading : Loading,delay:3000})
-const VisualList   = Loadable({loader: () => import('../routers/VisualManage/VisualList'), loading : Loading,delay:3000})
-const PriceConfig  = Loadable({loader: () => import('../routers/PriceManage/PriceConfig'), loading : Loading,delay:3000})
+const Home         = Loadable({loader: () => import('../routers/Home'), loading : DelayLoading,delay:3000})
+const ModuleList   = Loadable({loader: () => import('../routers/ModuleManage/ModuleList'), loading : DelayLoading,delay:3000})
+const FunctionList = Loadable({loader: () => import('../routers/FunctionManage/FunctionList'), loading : DelayLoading,delay:3000})
+const RoleList     = Loadable({loader: () => import('../routers/RoleManage/RoleList'), loading : DelayLoading,delay:3000})
+const EmployeesList= Loadable({loader: () => import('../routers/EmployeesManage/EmployeesList'), loading : DelayLoading,delay:3000})
+const UserList     = Loadable({loader: () => import('../routers/UserManage/UserList'), loading : DelayLoading,delay:3000})
+const UserOrder    = Loadable({loader: () => import('../routers/UserManage/UserOrder'), loading : DelayLoading,delay:3000})
+const UserManager  = Loadable({loader: () => import('../routers/UserManage/UserManager'), loading : DelayLoading,delay:3000})
+const EndOrder     = Loadable({loader: () => import('../routers/UserManage/EndOrder'), loading : DelayLoading,delay:3000})
+const VisualList   = Loadable({loader: () => import('../routers/VisualManage/VisualList'), loading : DelayLoading,delay:3000})
+const PriceConfig  = Loadable({loader: () => import('../routers/PriceManage/PriceConfig'), loading : DelayLoading,delay:3000})
 
 export default
 [{
