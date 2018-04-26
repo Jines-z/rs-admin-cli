@@ -1,6 +1,6 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { Form, Input, Button } from 'antd'
-import {inject, observer} from 'mobx-react'
+import { inject, observer } from 'mobx-react'
 const FormItem = Form.Item
 
 @inject('store')
@@ -11,9 +11,9 @@ class FromBox extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault()
-        let {updateLoading} = this.props.store
-        let {form} = this.props
-        this.props.submit(form,updateLoading)
+        let { updateLoading } = this.props.store
+        let { form } = this.props
+        this.props.submit(form, updateLoading)
     }
     render(){
         const { getFieldDecorator } = this.props.form

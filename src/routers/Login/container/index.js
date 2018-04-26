@@ -1,6 +1,6 @@
-import React, {Component} from 'react'
-import {Provider, inject, observer} from 'mobx-react'
-import {message} from 'antd'
+import React, { Component } from 'react'
+import { Provider, inject, observer } from 'mobx-react'
+import { message } from 'antd'
 import CryptoJS from 'crypto-js'
 import FormBox from '../components/FormBox'
 import Cookies from 'js-cookie'
@@ -21,7 +21,7 @@ class Login extends Component {
                 updateLoading(true)
                 this.timer = setTimeout(() => {
                     updateLoading(false)
-                    let {userName, password} = values
+                    let { userName, password } = values
                     if (userName == 'admin' && password == '123456') {
                         let message = `M&${userName}&${password}`
                         let key = 'react_starter'

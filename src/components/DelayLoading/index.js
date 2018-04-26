@@ -1,5 +1,5 @@
 import React from 'react'
-const  DelayLoading = ({pastDelay, error}) => {
+const  DelayLoading = ({ pastDelay, error }) => {
     if (pastDelay) {
         return <div>Loading...</div>
     } else if (error) {

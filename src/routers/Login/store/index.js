@@ -6,7 +6,7 @@
     在子组件内用 @inject('store')，将 store 注入到自己的 props 上。
 
    ====================================================== */
-import {observable, action} from 'mobx'
+import { observable, action } from 'mobx'
 
 class Store {
     @observable loading = false

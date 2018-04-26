@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import Left from '../components/Left'
 import Right from '../components/Right'
 import './index.less'
