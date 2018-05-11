@@ -47,6 +47,7 @@ npm run build
     -   development (time)：4.8s -> 3.8s
     -   production (time)：11.5s -> 5.4s
     -   size：916kb -> 747kb
+    -   refresh：-100ms
 
 `2018-03-29`
 -   全局Loading
