@@ -44,8 +44,8 @@ npm run build
 `2018-05-11`
 -   update webpack 3 to 4.8.1
 
-    -   development(time)：4.8s -> 3.8s
-    -   production(time)： 11.5s -> 5.4s
+    -   development (time)：4.8s -> 3.8s
+    -   production (time)：11.5s -> 5.4s
     -   size：916kb -> 747kb
 
 `2018-03-29`
