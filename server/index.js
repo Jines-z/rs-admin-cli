@@ -1,4 +1,3 @@
-const path = require("path")
 const express = require("express")
 const webpack = require("webpack")
 const opn = require('opn')
@@ -8,10 +7,10 @@ const webpackConfig = require('../webpack.config.js')
 const compress = require('compression')
 const app = express()
 const port = 8080
-app.use(compress())
-
-const DIST_DIR = path.join(__dirname, "dist")
 const compiler = webpack(webpackConfig)
+const project = require('../project.config')
+
+app.use(compress())
 
 const devMiddleware = webpackDevMiddleware(compiler, {
     quiet   : false,
@@ -32,7 +31,7 @@ const hotMiddleware = webpackHotMiddleware(compiler, {
 
 app.use(devMiddleware)
 app.use(hotMiddleware)
-app.use(express.static(DIST_DIR))
+app.use(express.static(project.basePath))
 
 module.exports = {
     app,

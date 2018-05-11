@@ -1,7 +1,8 @@
 const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const project = require('./project.config.js')
 
 const envDevelopment = project.env === 'development'
@@ -12,17 +13,16 @@ const SRC_DIR = path.join(project.basePath, project.srcDir)
 
 const config = {
     entry: {
-        normalize : [path.join(project.basePath, project.srcDir, 'normalize')],
-        main      : [SRC_DIR],
-        vendor    : project.vendor
+        main: [SRC_DIR]
     },
     output: {
         path      : path.resolve(project.basePath, project.outDir),
         filename  : envDevelopment ? 'js/[name].js' : "js/[name].[chunkhash:5].js",
         publicPath: project.publicPath
     },
-    devtool: devtool,
-    resolve: {
+    mode    : project.env,
+    devtool : devtool,
+    resolve : {
         modules: [
             project.srcDir,
             'node_modules',
@@ -46,17 +46,42 @@ const config = {
                 test    : /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader  : 'url-loader',
                 options : {
-                    limit: 10000,
+                    limit     : 10000,
                     outputPath: "images"
                 }
             }
         ]
     },
-    plugins: [
-        new webpack.DefinePlugin({
-            'process.env': {
-                'NODE_ENV': { NODE_ENV: JSON.stringify(project.env) }
+    optimization: {
+        sideEffects: false,
+        splitChunks: {
+            chunks     :'all',
+            minSize    : 30000,
+            minChunks  : 1,
+            cacheGroups: {
+                common: {
+                    name    : 'common',
+                    test    : /node_modules/,
+                    chunks  : 'initial',
+                    priority: -10,
+                    enforce : true
+                },
+                styles: {
+                    name: 'styles',
+                    test: /(\.less|\.css)$/,
+                    chunks: 'all',
+                    enforce: true,
+                }
             }
+        }
+    },
+    performance: {
+        hints: false
+    },
+    plugins: [
+        new webpack.DllReferencePlugin({
+            context : project.basePath,
+            manifest: path.resolve(project.basePath, 'dll', 'manifest.json')
         }),
         new HtmlWebpackPlugin({
             template : 'index.html',
@@ -66,9 +91,6 @@ const config = {
                 collapseWhitespace: true,
             }
         }),
-        new webpack.optimize.CommonsChunkPlugin({
-            names: ['vendor', 'normalize', 'manifest']
-        })
     ]
 }
 
@@ -106,72 +128,52 @@ if (envDevelopment) {
     )
     config.plugins.push(
         new webpack.NoEmitOnErrorsPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NamedModulesPlugin()
+        new webpack.HotModuleReplacementPlugin()
     )
 }
 
 if (envProduction) {
     config.module.rules.push({
         test: /(\.less|\.css)$/,
-        use : ExtractTextPlugin.extract({
-            use: [
-                {
-                    loader : 'css-loader',
-                    options: {
-                        importLoaders  : 1,
-                        localIdentName : '[local]',
-                        minimize: {
-                            autoprefixer: {
-                                add     : true,
-                                remove  : true,
-                                browsers: ['last 2 versions'],
-                            },
-                            discardComments : {
-                                removeAll : true,
-                            },
-                            discardUnused: false,
-                            mergeIdents  : false,
-                            reduceIdents : false,
-                            safe         : true,
+        use :[
+            MiniCssExtractPlugin.loader,
+            {
+                loader : 'css-loader',
+                options: {
+                    importLoaders  : 1,
+                    minimize: {
+                        autoprefixer: {
+                            add     : true,
+                            remove  : true,
+                            browsers: ['last 2 versions'],
                         },
+                        discardComments : {
+                            removeAll : true,
+                        },
+                        discardUnused: false,
+                        mergeIdents  : false,
+                        reduceIdents : false,
+                        safe         : true
                     }
-                },
-                {
-                    loader: 'less-loader',
-                    options: {
-                        javascriptEnabled: true
-                    }
-                },
-            ],
-            fallback: 'style-loader',
-        })
+                }
+            },
+            {
+                loader: 'less-loader',
+                options: {
+                    javascriptEnabled: true
+                }
+            }
+        ]
     })
     config.plugins.push(
-        new ExtractTextPlugin({
-            filename : 'css/[name].[contenthash:5].css',
-            disable  : envDevelopment,
-            allChunks: true,
+        new MiniCssExtractPlugin({
+            filename: "css/main.[chunkhash:5].css",
+            chunkFilename: 'css/main.[contenthash:5].css'
         }),
-        new webpack.optimize.ModuleConcatenationPlugin(),
-        new webpack.optimize.UglifyJsPlugin({
-            sourceMap: project.sourceMap,
-            comments : false,
-            compress : {
-                warnings     : false,
-                screw_ie8    : true,
-                conditionals : true,
-                unused       : true,
-                comparisons  : true,
-                sequences    : true,
-                dead_code    : true,
-                evaluate     : true,
-                if_return    : true,
-                join_vars    : true,
-                drop_debugger: true,
-                drop_console : true
-            }
-        })
+        new CopyWebpackPlugin([{
+            from : path.join(project.basePath,'dll'),
+            to   : path.join(project.basePath,'dist','dll')
+        }])
     )
 }
 
