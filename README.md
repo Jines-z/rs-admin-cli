@@ -5,6 +5,8 @@
 [![Mobx](https://img.shields.io/badge/mobx-^4.1.0-orange.svg?style=flat-square)](https://github.com/mobxjs/mobx)
 
 **演示地址：**[https://beverle-y.github.io/react-starter-kit](https://beverle-y.github.io/react-starter-kit)
+
+*Routers下除Layouts、Login外的其余组件均为展示作用.*
 ## Quick Start
 #### Down
 ~~~
