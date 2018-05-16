@@ -67,9 +67,9 @@ const config = {
                     enforce : true
                 },
                 styles: {
-                    name: 'styles',
-                    test: /(\.less|\.css)$/,
-                    chunks: 'all',
+                    name   : 'styles',
+                    test   : /(\.less|\.css)$/,
+                    chunks : 'all',
                     enforce: true,
                 }
             }
@@ -113,11 +113,11 @@ if (envDevelopment) {
     config.module.rules.push({
         test: /(\.less|\.css)$/,
         use: [{
-            loader: "style-loader"
+            loader : "style-loader"
         }, {
-            loader: "css-loader"
+            loader : "css-loader"
         }, {
-            loader: "less-loader",
+            loader : "less-loader",
             options: {
                 javascriptEnabled: true
             }
@@ -167,7 +167,7 @@ if (envProduction) {
     })
     config.plugins.push(
         new MiniCssExtractPlugin({
-            filename: "css/main.[chunkhash:5].css",
+            filename     : "css/main.[chunkhash:5].css",
             chunkFilename: 'css/main.[contenthash:5].css'
         }),
         new CopyWebpackPlugin([{
