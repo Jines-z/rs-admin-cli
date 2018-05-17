@@ -6,7 +6,6 @@
 
 **演示地址：**[https://beverle-y.github.io/react-starter-kit](https://beverle-y.github.io/react-starter-kit)
 
-*Routers下除 Layouts、Login 外的其余组件均为展示作用.*
 ## Quick Start
 #### Down
 ~~~
