@@ -1,6 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { HashRouter } from 'react-router-dom'
+import 'normalize'
 import Routers from './routers'
 
 class App extends React.Component {
