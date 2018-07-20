@@ -42,6 +42,9 @@ npm run build
 若没有CDN，只能发布静态资源，需修改webpack配置，将所有文件放置在同一目录下。
 
 ## Log
+`2018-07-20`
+-   修改fonts和一些less的文件位置
+
 `2018-05-11`
 -   update webpack 3 to 4.8.1
 
