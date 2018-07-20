@@ -45,7 +45,7 @@ class Login extends Component {
     render() {
         return (
             <Provider store={this.store}>
-                <div className='Login_wrap clear clearFix'>
+                <div className='Login_wrap clearFix'>
                     <div className='form P_auto'>
                         <span className='font icon-react'></span>
                         <FormBox submit={this.submit}/>
