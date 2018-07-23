@@ -6,8 +6,6 @@
 
 **演示地址：**[https://beverle-y.github.io/react-starter-kit](https://beverle-y.github.io/react-starter-kit)
 
-**Redux版：**[react-redux-starter-kit](https://github.com/beverle-y/react-redux-starter-kit)
-
 ## Quick Start
 #### Down
 ~~~
@@ -44,6 +42,9 @@ npm run build
 若没有CDN，只能发布静态资源，需修改webpack配置，将所有文件放置在同一目录下。
 
 ## Log
+`2018-07-23`
+-   **Redux版：**[react-redux-starter-kit](https://github.com/beverle-y/react-redux-starter-kit)
+
 `2018-07-20`
 -   修改fonts和一些less的文件位置
 
