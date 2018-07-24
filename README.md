@@ -41,9 +41,12 @@ npm run build
 
 若没有CDN，只能发布静态资源，需修改webpack配置，将所有文件放置在同一目录下。
 
+## Ps
+关于dll的说明：本项目使用yarn下载依赖包，有些同学习惯用npm、cnpm，这样因为没有lock文件会导致依赖包的版本不同，致使dll的hash不同于本项目，所以有些人会遇到 404 或者资源没找到等情况，这种情况下只要改一下html引用的路径即可。
+
 ## Log
 `2018-07-23`
--   **Redux版：**[react-redux-starter-kit](https://github.com/beverle-y/react-redux-starter-kit)
+-   Redux版：[react-redux-starter-kit](https://github.com/beverle-y/react-redux-starter-kit)
 
 `2018-07-20`
 -   修改fonts和一些less的文件位置
