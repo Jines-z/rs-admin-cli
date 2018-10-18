@@ -1,14 +1,14 @@
 const webpack = require('webpack')
-const ora = require('ora')
-const webpackConfig = require('../webpack.config')
+const ora     = require('ora')
+const config  = require('../webpack.config')
 
 const spinner = new ora('Webpack is compiling ...\n')
 spinner.color = 'green'
 spinner.start()
 
-webpack(webpackConfig).run((err, stats) => {
+webpack(config).run((err, stats) => {
     if (err) {
-        console.log('Webpack compile failure')
+        console.log('Webpack compile failure！'.red)
     } else {
         spinner.stop()
         process.stdout.write(stats.toString({
@@ -18,7 +18,7 @@ webpack(webpackConfig).run((err, stats) => {
             chunks       : false,
             chunkModules : false
         }) + '\n\n')
-        console.log('Webpack compiler finished successfully！ See ./dist.')
+        console.log('Webpack compiler finished successfully！ See ./dist. \n')
     }
 })
 

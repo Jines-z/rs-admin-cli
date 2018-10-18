@@ -1,13 +1,14 @@
-const webpack = require('webpack')
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack              = require('webpack')
+const path                 = require('path')
+const HtmlWebpackPlugin    = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const project = require('./project.config.js')
+const CopyWebpackPlugin    = require('copy-webpack-plugin')
+const IncludeAssetsPlugin  = require('html-webpack-include-assets-plugin')
+const project              = require('./project.config.js')
 
 const envDevelopment = project.env === 'development'
-const envProduction = project.env === 'production'
-const devtool = project.sourceMap ? 'cheap-source-map' : false
+const envProduction  = project.env === 'production'
+const devtool        = project.sourceMap ? 'cheap-source-map' : false
 
 const SRC_DIR = path.join(project.basePath, project.srcDir)
 
@@ -91,6 +92,14 @@ const config = {
                 collapseWhitespace: true,
             }
         }),
+        new IncludeAssetsPlugin({
+            assets: [{
+                path: 'dll',
+                glob: '*.js',
+                globPath: path.join(project.basePath, 'dll')
+            }],
+            append: false
+        })
     ]
 }
 
@@ -171,8 +180,8 @@ if (envProduction) {
             chunkFilename: 'css/main.[contenthash:5].css'
         }),
         new CopyWebpackPlugin([{
-            from : path.join(project.basePath,'dll'),
-            to   : path.join(project.basePath,'dist','dll')
+            from : path.join(project.basePath, 'dll'),
+            to   : path.join(project.basePath, 'dist', 'dll')
         }])
     )
 }

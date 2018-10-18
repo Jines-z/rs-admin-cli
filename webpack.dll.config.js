@@ -10,6 +10,9 @@ module.exports = {
         filename: '[name].dll.[hash:5].js',
         library: '[name]_library'
     },
+    performance: {
+        hints: false
+    },
     plugins: [
         new webpack.DllPlugin({
             name: '[name]_library',
