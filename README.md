@@ -19,7 +19,7 @@ yarn install
 ~~~
 
 #### Dll
-第一次运行需要打包vendor，仅运行一次。当依赖(vendor)改变时需重新打包，更改index.html内引入的路径。
+The first time，you need to build the vendor and only run it once。When the vendor changes，it needs to be rebuild。
 ~~~
 npm run dll
 ~~~
@@ -42,15 +42,18 @@ npm run build
 
 若没有CDN，只能发布静态资源，需修改webpack配置，将所有文件放置在同一目录下。
 
-## Ps
-关于 dll 的说明：本项目使用 yarn 下载依赖包，有些同学习惯用 npm、cnpm，这样因为没有 lock 文件会导致依赖包的版本不同，致使 dll 的 hash 不同于本项目，所以有些人会遇到 404 或者资源没找到等情况，这种情况下只要改一下 html 引用的路径即可。
+## Ps (It is now ready to be injected dynamically without having to change it manually)
+~~关于 dll 的说明：本项目使用 yarn 下载依赖包，有些同学习惯用 npm、cnpm，这样因为没有 lock 文件会导致依赖包的版本不同，致使 dll 的 hash 不同于本项目，所以有些人会遇到 404 或者资源没找到等情况，这种情况下只要改一下 html 引用的路径即可。~~
 
 ## Log
+`2018-10-18`
+-   Dynamically inject `dll` to index.html at compile time
+
 `2018-07-23`
--   Redux版：[react-redux-starter-kit](https://github.com/beverle-y/react-redux-starter-kit)
+-   With redux：[react-redux-starter-kit](https://github.com/beverle-y/react-redux-starter-kit)
 
 `2018-07-20`
--   修改fonts和一些less的文件位置
+-   Modify the location of some folders
 
 `2018-05-11`
 -   update webpack 3 to 4.8.1
@@ -61,10 +64,10 @@ npm run build
     -   refresh：-100ms
 
 `2018-03-29`
--   全局Loading
--   message提示
+-   Global loading
+-   message
 
 `2018-03-28`
--   修复Right缺少route props
+-   Repairing the Right lacks the route props
 
 
