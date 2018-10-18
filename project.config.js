@@ -9,4 +9,5 @@ module.exports = {
     sourceMap  : NODE_ENV == 'development' ? true : false,
     externals  : {},
     vendor     : ['react', 'react-dom', 'react-router-dom', 'react-loadable', 'mobx', 'mobx-react', 'crypto-js', 'js-cookie']
+    // vendor改变时，需 npm run dll，下一期会做成自动的。
 }
