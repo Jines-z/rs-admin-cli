@@ -19,7 +19,7 @@ yarn install
 ~~~
 
 #### Dll
-The first time，you need to build the vendor and only run it once。When the vendor changes，it needs to be rebuild。
+The first time，you need to packaged the vendor and only run it once。When the vendor changes，it needs to be repackaged。
 ~~~
 npm run dll
 ~~~
