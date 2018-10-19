@@ -4,9 +4,9 @@
 [![Ant Design](https://img.shields.io/badge/ant--design-^3.0.3-yellowgreen.svg?style=flat-square)](https://github.com/ant-design/ant-design)
 [![Mobx](https://img.shields.io/badge/mobx-^4.1.0-orange.svg?style=flat-square)](https://github.com/mobxjs/mobx)
 
-**演示地址：**[https://beverle-y.github.io/react-starter-kit](https://beverle-y.github.io/react-starter-kit)
+**Preview：**[https://beverle-y.github.io/react-starter-kit](https://beverle-y.github.io/react-starter-kit)
 
-**Redux版：**[react-redux-starter-kit](https://github.com/beverle-y/react-redux-starter-kit)
+**With redux：**[react-redux-starter-kit](https://github.com/beverle-y/react-redux-starter-kit)
 ## Quick Start
 #### Down
 ~~~
@@ -19,7 +19,7 @@ yarn install
 ~~~
 
 #### Dll
-第一次运行时，需打包vendor。当依赖（vendor）改变时，需重新打包。
+The first time, you need to packaged the vendor and only run it once. When the vendor changes, it needs to be repackaged.
 ~~~
 npm run dll
 ~~~
@@ -34,27 +34,28 @@ npm start
 npm run build
 ~~~
 
-#### 发布CDN(推荐)
+#### Publish CDN (Recommend)
 
-将project.config.js内publicPath改为服务器绝对路径。
+Change the "publicPath" in "project.config.js" to the absolute path of the server.
 
-#### 发布静态资源
+#### Publish statics
 
-若没有CDN，只能发布静态资源，需修改webpack配置，将所有文件放置在同一目录下。
+Modify the "webpack" configuration to place all files in the same directory.
 
 ## Ps
-(现在已经可以动态注入 dll，无需手动更改)
+(It is now ready to be injected dynamically without having to change it manually)
+
 ~~关于 dll 的说明：本项目使用 yarn 下载依赖包，有些同学习惯用 npm、cnpm，这样因为没有 lock 文件会导致依赖包的版本不同，致使 dll 的 hash 不同于本项目，所以有些人会遇到 404 或者资源没找到等情况，这种情况下只要改一下 html 引用的路径即可。~~
 
 ## Log
 `2018-10-18`
--   在编译时，动态注入 dll
+-   Dynamically inject `dll` to index.html at compile time
 
 `2018-07-23`
--   Redux版：[react-redux-starter-kit](https://github.com/beverle-y/react-redux-starter-kit)
+-   With redux：[react-redux-starter-kit](https://github.com/beverle-y/react-redux-starter-kit)
 
 `2018-07-20`
--   修改了一些文件夹的位置
+-   Modify the location of some folders
 
 `2018-05-11`
 -   update webpack 3 to 4.8.1
@@ -69,6 +70,6 @@ npm run build
 -   message
 
 `2018-03-28`
--   修复Right缺少props
+-   Repairing the Right lacks the route props
 
 
