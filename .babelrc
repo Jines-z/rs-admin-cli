@@ -1,24 +1,23 @@
 {
   "presets": [
-    "react",
+    "@babel/preset-react",
     [
-      "env",
+      "@babel/preset-env",
       {
-        "modules": false,
-        "useBuiltIns": false,
-        "uglify": true,
-        "targets": {
+        "modules"    : false,
+        "useBuiltIns": "usage",
+        "targets"    : {
           "browsers": ["last 2 versions"]
         }
       }
     ]
   ],
   "plugins": [
-    "transform-decorators-legacy",
-    "transform-class-properties",
-    "syntax-dynamic-import",
-    ["transform-runtime",{"polyfill": false}],
-    ["transform-object-rest-spread",{"useBuiltIns": true}],
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    ["@babel/plugin-proposal-class-properties", { "loose": true }],
+    "@babel/plugin-syntax-dynamic-import",
+    ["@babel/plugin-transform-runtime"],
+    ["@babel/plugin-proposal-object-rest-spread", {"useBuiltIns": true}],
     ["import", { "libraryName": "antd", "style": true }]
   ]
 }
