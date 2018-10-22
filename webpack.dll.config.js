@@ -5,6 +5,7 @@ module.exports = {
     entry: {
         vendor: project.vendor
     },
+    mode: 'production',
     output: {
         path: path.resolve(project.basePath, 'dll'),
         filename: '[name].dll.[hash:5].js',
