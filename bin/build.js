@@ -7,17 +7,17 @@ spinner.color = 'green'
 spinner.start()
 
 webpack(config).run((err, stats) => {
-    if (err) {
-        console.log('Webpack compile failure！'.red)
+    spinner.stop()
+    process.stdout.write(stats.toString({
+        colors       : true,
+        modules      : false,
+        children     : false,
+        chunks       : false,
+        chunkModules : false
+    }) + '\n\n')
+    if (err || stats.hasErrors()) {
+        console.log('\u001b[31m Webpack compile failure！ \u001b[39m \n')
     } else {
-        spinner.stop()
-        process.stdout.write(stats.toString({
-            colors       : true,
-            modules      : false,
-            children     : false,
-            chunks       : false,
-            chunkModules : false
-        }) + '\n\n')
         console.log('Webpack compiler finished successfully！ See ./dist. \n')
     }
 })
