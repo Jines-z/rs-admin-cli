@@ -49,7 +49,7 @@ Modify the "webpack" configuration to place all files in the same directory.
 
 ## Log
 `2018-10-26`
--   Add ESLint
+-   Add ESLint (You can control the switch in "project.config.js")
 
 `2018-10-22`
 -   Upgrade to @babel 7
