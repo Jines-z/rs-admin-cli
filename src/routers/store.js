@@ -13,13 +13,13 @@ import { observable, action } from 'mobx'
 
 class Store {
     @observable userInfo = {
-        name : ''
+        name: ''
     }
     @observable loading = false
-    @action updateName = (name) => {
+    @action updateName = name => {
         this.userInfo.name = name
     }
-    @action updateLoading = (boolean) => {
+    @action updateLoading = boolean => {
         this.loading = boolean
     }
 }

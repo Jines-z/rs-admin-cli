@@ -1,0 +1,7 @@
+/dist/
+/bin/
+/dll/
+/server/
+project.config.js
+webpack.config.js
+webpack.dll.config.js

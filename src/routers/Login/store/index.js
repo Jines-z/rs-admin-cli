@@ -10,7 +10,7 @@ import { observable, action } from 'mobx'
 
 class Store {
     @observable loading = false
-    @action updateLoading = (boolean) => {
+    @action updateLoading = boolean => {
         this.loading = boolean
     }
 }

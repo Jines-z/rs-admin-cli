@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import { inject,observer } from 'mobx-react'
+import { inject, observer } from 'mobx-react'
 import { Spin } from 'antd'
 import './index.less'
 
@@ -8,17 +8,17 @@ import './index.less'
 @inject('Store')
 @observer
 class Loading extends Component {
-    componentDidUpdate(){
+    componentDidUpdate() {
         if (this.props.Store.loading) {
-            setTimeout(()=>{
+            setTimeout(() => {
                 this.props.Store.updateLoading(false)
-            },500)
+            }, 500)
         }
     }
-    componentWillReceiveProps(){
+    componentWillReceiveProps() {
         this.props.Store.updateLoading(true)
     }
-    shouldComponentUpdate(nextProps){
+    shouldComponentUpdate(nextProps) {
         if (this.props.location.pathname != nextProps.location.pathname) {
             return true
         }

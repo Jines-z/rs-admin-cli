@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import Loadable from 'react-loadable'
 import DelayLoading from '../components/DelayLoading'
 

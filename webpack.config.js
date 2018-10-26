@@ -4,13 +4,28 @@ const HtmlWebpackPlugin    = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const CopyWebpackPlugin    = require('copy-webpack-plugin')
 const IncludeAssetsPlugin  = require('html-webpack-include-assets-plugin')
+const eslintFormatter      = require('eslint-friendly-formatter')
 const project              = require('./project.config.js')
 
 const envDevelopment = project.env === 'development'
 const envProduction  = project.env === 'production'
+const isEsLint       = project.eslint
 const devtool        = project.sourceMap ? 'cheap-source-map' : false
 
 const SRC_DIR = path.join(project.basePath, project.srcDir)
+
+const eslintRule = () => ({
+    test: /(\.jsx|\.js)$/,
+    use : {
+        loader : 'eslint-loader?cacheDirectory',
+        options: {
+            formatter: eslintFormatter
+        }
+    },
+    enforce: 'pre',
+    include: SRC_DIR,
+    exclude: /node_modules/
+})
 
 const config = {
     entry: {
@@ -35,6 +50,7 @@ const config = {
     },
     module : {
         rules: [
+            ...(isEsLint ? [eslintRule()] : []),
             {
                 test: /(\.jsx|\.js)$/,
                 use : {
@@ -44,12 +60,14 @@ const config = {
                 exclude: /node_modules/
             },
             {
-                test    : /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-                loader  : 'url-loader',
-                options : {
-                    limit     : 10000,
-                    outputPath: "images"
-                }
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                use : {
+                    loader  : 'url-loader',
+                    options : {
+                        limit     : 10000,
+                        outputPath: "images"
+                    }
+                },
             }
         ]
     },

@@ -4,7 +4,7 @@ import { message } from 'antd'
 import CryptoJS from 'crypto-js'
 import FormBox from '../components/FormBox'
 import Cookies from 'js-cookie'
-import store from '../store'
+import Store from '../store'
 import './index.less'
 
 @inject('Store')
@@ -12,7 +12,7 @@ import './index.less'
 class Login extends Component {
     constructor() {
         super()
-        this.store = new store() // 在这里实例化，保证每次加载组件数据的初始化。
+        this.store = new Store() // 在这里实例化，保证每次加载组件数据的初始化。
     }
 
     submit = (form, updateLoading) => {
@@ -26,8 +26,8 @@ class Login extends Component {
                         let message = `M&${userName}&${password}`
                         let key = 'react_starter'
                         let session = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA1(message, key))
-                        Cookies.set('JSESSIONID', session, { expires: 1, path: '/' });
-                        Cookies.set('userName', userName, { expires: 1, path: '/' });
+                        Cookies.set('JSESSIONID', session, { expires: 1, path: '/' })
+                        Cookies.set('userName', userName, { expires: 1, path: '/' })
                         this.props.Store.updateName(userName)
                         this.props.history.push('/home')
                     } else {
@@ -35,7 +35,7 @@ class Login extends Component {
                     }
                 }, 1500)
             }
-        });
+        })
     }
 
     componentWillUnmount() {
@@ -48,7 +48,7 @@ class Login extends Component {
                 <div className='Login_wrap clearFix'>
                     <div className='form P_auto'>
                         <span className='font icon-react'></span>
-                        <FormBox submit={this.submit}/>
+                        <FormBox submit={this.submit} />
                     </div>
                 </div>
             </Provider>

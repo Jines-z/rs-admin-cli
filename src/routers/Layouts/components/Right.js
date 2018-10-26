@@ -10,13 +10,13 @@ import Loading from '@/components/Loading'
 @inject('Store')
 @observer
 class Right extends Component {
-    componentWillMount(){
-        let { userInfo,updateName } = this.props.Store
+    componentWillMount() {
+        let { userInfo, updateName } = this.props.Store
         if (userInfo.name == '') {
             updateName(Cookies.get('userName'))
         }
     }
-    logout = () =>{
+    logout = () => {
         this.props.logout()
     }
     render() {
@@ -26,15 +26,15 @@ class Right extends Component {
                 <div className='header clear clearFix'>
                     <div className='user'>
                         <span className='font icon-touxiang'></span>
-                        <Tooltip title={<span style={{fontSize:'14px',cursor:'pointer'}} onClick={this.logout}>退出</span>}>
+                        <Tooltip title={<span style={{ fontSize: '14px', cursor: 'pointer' }} onClick={this.logout}>退出</span>}>
                             <span className='name'>{name}</span>
                         </Tooltip>
                     </div>
                 </div>
                 <div className='routeWrap'>
                     <Loading>
-                        {routerConfig.map((item,i)=>
-                            <Route key={i} path={item.path} component={item.component} exact/>
+                        {routerConfig.map((item, i) =>
+                            <Route key={i} path={item.path} component={item.component} exact />
                         )}
                     </Loading>
                 </div>

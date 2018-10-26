@@ -8,11 +8,12 @@ import Cookies from 'js-cookie'
 
 @withRouter
 class Routers extends Component {
-    constructor(props){
+    constructor(props) {
         super(props)
         this.pathname = this.props.location.pathname
     }
-    checkJsessionID = () =>{
+
+    checkJsessionID = () => {
         if (this.props.location.pathname != '/login') {
             if (!Cookies.get('JSESSIONID')) {
                 this.props.history.replace('/login')
@@ -23,7 +24,8 @@ class Routers extends Component {
             }
         }
     }
-    componentWillMount(){
+
+    componentWillMount() {
         if (this.pathname == '/') {
             if (Cookies.get('JSESSIONID')) {
                 this.props.history.replace('/home')
@@ -34,15 +36,17 @@ class Routers extends Component {
             this.checkJsessionID()
         }
     }
-    componentWillReceiveProps (){
-      this.checkJsessionID()
+
+    componentWillReceiveProps() {
+        this.checkJsessionID()
     }
-    render(){
+
+    render() {
         return (
             <Provider Store={store}>
                 <Switch>
-                    <Route path="/login" component={Login}/>
-                    <Route path='/' component={Layouts}/>
+                    <Route path='/login' component={Login} />
+                    <Route path='/' component={Layouts} />
                 </Switch>
             </Provider>
         )

@@ -5,7 +5,7 @@ import './index.less'
 import Cookies from 'js-cookie'
 
 class Layouts extends Component {
-    logout = () =>{
+    logout = () => {
         Cookies.remove('JSESSIONID', { path: '/' })
         Cookies.remove('userName', { path: '/' })
         this.props.history.replace('/login')
@@ -14,7 +14,7 @@ class Layouts extends Component {
         return (
             <div className='Layouts_wrap clearFix'>
                 <Left />
-                <Right logout={this.logout}/>
+                <Right logout={this.logout} />
             </div>
         )
     }

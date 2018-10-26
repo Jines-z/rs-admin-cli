@@ -6,36 +6,36 @@ const FormItem = Form.Item
 @inject('store')
 @observer
 class FromBox extends Component {
-    constructor(){
+    constructor() {
         super()
     }
-    handleSubmit = (e) => {
+    handleSubmit = e => {
         e.preventDefault()
         let { updateLoading } = this.props.store
         let { form } = this.props
         this.props.submit(form, updateLoading)
     }
-    render(){
+    render() {
         const { getFieldDecorator } = this.props.form
         const { loading } = this.props.store
         return (
             <Form onSubmit={this.handleSubmit}>
                 <FormItem>
                     {getFieldDecorator('userName', {
-                        rules: [{ required: true, message: '输入admin' }],
+                        rules: [{ required: true, message: '输入admin' }]
                     })(
-                        <Input prefix={<span className='font icon-user' style={{ color: 'rgba(0,0,0,.25)' }}></span>} placeholder="admin" />
+                        <Input prefix={<span className='font icon-user' style={{ color: 'rgba(0,0,0,.25)' }}></span>} placeholder='admin' />
                     )}
                 </FormItem>
                 <FormItem>
                     {getFieldDecorator('password', {
-                        rules: [{ required: true, message: '密码是123456' }],
+                        rules: [{ required: true, message: '密码是123456' }]
                     })(
-                        <Input prefix={<span className='font icon-mima' style={{ color: 'rgba(0,0,0,.25)' }}></span>} type="password" placeholder="123456" />
+                        <Input prefix={<span className='font icon-mima' style={{ color: 'rgba(0,0,0,.25)' }}></span>} type='password' placeholder='123456' />
                     )}
                 </FormItem>
                 <FormItem>
-                    <Button type="primary" htmlType="submit" className="l_button" loading={loading}>
+                    <Button type='primary' htmlType='submit' className='l_button' loading={loading}>
                         登录
                     </Button>
                 </FormItem>
@@ -44,4 +44,4 @@ class FromBox extends Component {
     }
 }
 
-export default Form.create()(FromBox);
+export default Form.create()(FromBox)
