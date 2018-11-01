@@ -6,7 +6,6 @@ module.exports = {
     srcDir     : 'src',
     outDir     : 'dist',
     publicPath : NODE_ENV === 'development' ? './' : 'https://beverle-y.github.io/react-starter-kit/',
-    sourceMap  : NODE_ENV === 'development' ? true : false,
     externals  : {},
     eslint     : true,
     vendor     : ['react', 'react-dom', 'react-router-dom', 'react-loadable', 'mobx', 'mobx-react', 'crypto-js', 'js-cookie']

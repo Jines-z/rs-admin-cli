@@ -1,13 +1,7 @@
 const webpack = require('webpack')
-const ora     = require('ora')
-const config  = require('../webpack.config')
-
-const spinner = new ora('Webpack is compiling ...\n')
-spinner.color = 'green'
-spinner.start()
+const config  = require('../config/webpack.pro.config')
 
 webpack(config).run((err, stats) => {
-    spinner.stop()
     process.stdout.write(stats.toString({
         colors       : true,
         modules      : false,
@@ -21,5 +15,3 @@ webpack(config).run((err, stats) => {
         console.log('Webpack compiler finished successfully！ See ./dist. \n')
     }
 })
-
-

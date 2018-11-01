@@ -1,14 +1,14 @@
-const express = require("express")
-const webpack = require("webpack")
-const opn = require('opn')
-const webpackDevMiddleware = require("webpack-dev-middleware")
-const webpackHotMiddleware = require("webpack-hot-middleware")
-const webpackConfig = require('../webpack.config.js')
-const compress = require('compression')
-const app = express()
-const port = 8080
-const compiler = webpack(webpackConfig)
-const project = require('../project.config')
+const express              = require("express")
+const webpack              = require("webpack")
+const opn                  = require('opn')
+const webpackDevMiddleware = require('webpack-dev-middleware')
+const webpackHotMiddleware = require('webpack-hot-middleware')
+const webpackConfig        = require('../config/webpack.dev.config')
+const compress             = require('compression')
+const project              = require('../project.config')
+const app                  = express()
+const port                 = 8080
+const compiler             = webpack(webpackConfig)
 
 app.use(compress())
 
@@ -21,7 +21,7 @@ const devMiddleware = webpackDevMiddleware(compiler, {
 })
 
 devMiddleware.waitUntilValid(()=>{
-    opn("http://localhost:"+ port)
+    opn('http://localhost:' + port)
 })
 
 const hotMiddleware = webpackHotMiddleware(compiler, {

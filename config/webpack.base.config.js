@@ -1,18 +1,11 @@
-const webpack              = require('webpack')
-const path                 = require('path')
-const HtmlWebpackPlugin    = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
-const CopyWebpackPlugin    = require('copy-webpack-plugin')
-const IncludeAssetsPlugin  = require('html-webpack-include-assets-plugin')
-const eslintFormatter      = require('eslint-friendly-formatter')
-const project              = require('./project.config.js')
-
-const envDevelopment = project.env === 'development'
-const envProduction  = project.env === 'production'
-const isEsLint       = project.eslint
-const devtool        = project.sourceMap ? 'cheap-source-map' : false
-
-const SRC_DIR = path.join(project.basePath, project.srcDir)
+const webpack             = require('webpack')
+const path                = require('path')
+const HtmlWebpackPlugin   = require('html-webpack-plugin')
+const IncludeAssetsPlugin = require('html-webpack-include-assets-plugin')
+const eslintFormatter     = require('eslint-friendly-formatter')
+const project             = require('../project.config.js')
+const isEsLint            = project.eslint
+const SRC_DIR             = path.join(project.basePath, project.srcDir)
 
 const eslintRule = () => ({
     test: /(\.jsx|\.js)$/,
@@ -27,17 +20,14 @@ const eslintRule = () => ({
     exclude: /node_modules/
 })
 
-const config = {
+const base = {
     entry: {
         main: [SRC_DIR]
     },
     output: {
         path      : path.resolve(project.basePath, project.outDir),
-        filename  : envDevelopment ? 'js/[name].js' : "js/[name].[chunkhash:5].js",
         publicPath: project.publicPath
     },
-    mode    : project.env,
-    devtool : devtool,
     resolve : {
         modules: [
             project.srcDir,
@@ -125,83 +115,15 @@ const fontLoader = [['woff', 'application/font-woff'], ['woff2', 'application/fo
 fontLoader.forEach((font) => {
     let extension = font[0]
     let mimetype = font[1]
-    config.module.rules.push({
+    base.module.rules.push({
         test    : new RegExp(`\\.${extension}$`),
         loader  : 'url-loader',
         options : {
             name  : 'fonts/[name].[ext]',
             limit : 10000,
-            mimetype,
-        },
+            mimetype
+        }
     })
 })
 
-if (envDevelopment) {
-    config.module.rules.push({
-        test: /(\.less|\.css)$/,
-        use: [{
-            loader : "style-loader"
-        }, {
-            loader : "css-loader"
-        }, {
-            loader : "less-loader",
-            options: {
-                javascriptEnabled: true
-            }
-        }]
-    })
-    config.entry.main.push(
-        'webpack-hot-middleware/client?path=./__webpack_hmr'
-    )
-    config.plugins.push(
-        new webpack.NoEmitOnErrorsPlugin(),
-        new webpack.HotModuleReplacementPlugin()
-    )
-}
-
-if (envProduction) {
-    config.module.rules.push({
-        test: /(\.less|\.css)$/,
-        use :[
-            MiniCssExtractPlugin.loader,
-            {
-                loader : 'css-loader',
-                options: {
-                    importLoaders  : 1,
-                    minimize: {
-                        autoprefixer: {
-                            add     : true,
-                            remove  : true,
-                            browsers: ['last 2 versions'],
-                        },
-                        discardComments : {
-                            removeAll : true,
-                        },
-                        discardUnused: false,
-                        mergeIdents  : false,
-                        reduceIdents : false,
-                        safe         : true
-                    }
-                }
-            },
-            {
-                loader: 'less-loader',
-                options: {
-                    javascriptEnabled: true
-                }
-            }
-        ]
-    })
-    config.plugins.push(
-        new MiniCssExtractPlugin({
-            filename     : "css/main.[chunkhash:5].css",
-            chunkFilename: 'css/main.[contenthash:5].css'
-        }),
-        new CopyWebpackPlugin([{
-            from : path.join(project.basePath, 'dll'),
-            to   : path.join(project.basePath, 'dist', 'dll')
-        }])
-    )
-}
-
-module.exports = config
+module.exports = base
