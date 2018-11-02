@@ -1,8 +1,9 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const ProgressBarPlugin    = require('progress-bar-webpack-plugin')
+const WebpackBar           = require('webpackbar')
 const CopyWebpackPlugin    = require('copy-webpack-plugin')
-const merge   = require('webpack-merge')
-const path    = require('path')
+const merge                = require('webpack-merge')
+const path                 = require('path')
+
 const base    = require('./webpack.base.config')
 const project = require('../project.config')
 
@@ -49,13 +50,8 @@ const production = {
         ]
     },
     plugins: [
-        new ProgressBarPlugin({
-            width      : 40,
-            format     : '[:bar]',
-            complete   : '\u001b[47m \u001b[0m',
-            incomplete : '\u001b[37m \u001b[0m',
-            clear      : true,
-            summary    : false
+        new WebpackBar({
+            minimal: false
         }),
         new MiniCssExtractPlugin({
             filename      : 'css/main.[chunkhash:5].css',

@@ -5,9 +5,9 @@
   "author": "bevelery <zhengaojin@live.cn> (https://github.com/beverle-y)",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dll": "npm run clean-dll && cross-env NODE_ENV=production webpack -p --config config/webpack.dll.config.js",
-    "start": "cross-env NODE_ENV=development node bin/start",
+    "dll": "npm run clean-dll && cross-env NODE_ENV=production node bin/dll",
     "build": "npm run clean-dist && cross-env NODE_ENV=production node bin/build",
+    "start": "cross-env NODE_ENV=development node bin/start",
     "clean-dist": "rimraf dist",
     "clean-dll": "rimraf dll"
   },
@@ -39,6 +39,7 @@
     "babel-eslint": "8.2.6",
     "babel-loader": "^8.0.4",
     "babel-plugin-import": "^1.6.6",
+    "chalk": "^2.4.1",
     "compression": "^1.7.2",
     "copy-webpack-plugin": "^4.5.1",
     "cross-env": "^5.1.3",
@@ -61,7 +62,6 @@
     "less-loader": "^4.1.0",
     "mini-css-extract-plugin": "^0.4.4",
     "opn": "^5.2.0",
-    "progress-bar-webpack-plugin": "^1.11.0",
     "rimraf": "^2.6.2",
     "style-loader": "^0.21.0",
     "url-loader": "^1.0.1",
@@ -69,6 +69,7 @@
     "webpack-cli": "^3.1.2",
     "webpack-dev-middleware": "^3.4.0",
     "webpack-hot-middleware": "^2.24.3",
-    "webpack-merge": "^4.1.4"
+    "webpack-merge": "^4.1.4",
+    "webpackbar": "^2.6.3"
   }
 }

@@ -1,7 +1,7 @@
-const webpack           = require('webpack')
-const ProgressBarPlugin = require('progress-bar-webpack-plugin')
-const path              = require('path')
-const project           = require('../project.config')
+const webpack    = require('webpack')
+const WebpackBar = require('webpackbar')
+const path       = require('path')
+const project    = require('../project.config')
 
 module.exports = {
     entry: {
@@ -17,13 +17,9 @@ module.exports = {
         hints: false
     },
     plugins: [
-        new ProgressBarPlugin({
-            width      : 40,
-            clear      : true,
-            summary    : false,
-            format     : '[:bar]',
-            complete   : '\u001b[47m \u001b[0m',
-            incomplete : '\u001b[37m \u001b[0m'
+        new WebpackBar({
+            minimal: false,
+            compiledIn: false
         }),
         new webpack.DllPlugin({
             name    : '[name]_library',
