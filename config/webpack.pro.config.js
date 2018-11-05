@@ -49,6 +49,29 @@ const production = {
             }
         ]
     },
+    optimization: {
+        sideEffects: false,
+        splitChunks: {
+            chunks     :'all',
+            minSize    : 30000,
+            minChunks  : 1,
+            cacheGroups: {
+                common: {
+                    name    : 'common',
+                    test    : /node_modules/,
+                    chunks  : 'initial',
+                    priority: -10,
+                    enforce : true
+                },
+                styles: {
+                    name   : 'styles',
+                    test   : /(\.less|\.css)$/,
+                    chunks : 'all',
+                    enforce: true,
+                }
+            }
+        }
+    },
     plugins: [
         new WebpackBar({
             minimal: false

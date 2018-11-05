@@ -2,17 +2,17 @@ const webpack             = require('webpack')
 const path                = require('path')
 const HtmlWebpackPlugin   = require('html-webpack-plugin')
 const IncludeAssetsPlugin = require('html-webpack-include-assets-plugin')
-const eslintFormatter     = require('eslint-friendly-formatter')
+const ESLintFormatter     = require('eslint-friendly-formatter')
 const project             = require('../project.config.js')
 const isEsLint            = project.eslint
 const SRC_DIR             = path.join(project.basePath, project.srcDir)
 
-const eslintRule = () => ({
+const ESLintRule = () => ({
     test: /(\.jsx|\.js)$/,
     use : {
         loader : 'eslint-loader?cacheDirectory',
         options: {
-            formatter: eslintFormatter
+            formatter: ESLintFormatter
         }
     },
     enforce: 'pre',
@@ -40,7 +40,7 @@ const base = {
     },
     module : {
         rules: [
-            ...(isEsLint ? [eslintRule()] : []),
+            ...(isEsLint ? [ESLintRule()] : []),
             {
                 test: /(\.jsx|\.js)$/,
                 use : {
@@ -50,39 +50,26 @@ const base = {
                 exclude: /node_modules/
             },
             {
-                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                test: /\.(png|PNG|jpe?g|JPG|gif|GIF|svg)(\?.*)?$/,
                 use : {
                     loader  : 'url-loader',
                     options : {
-                        limit     : 10000,
-                        outputPath: "images"
+                        limit: 10000,
+                        name: 'images/[name].[hash:5].[ext]'
                     }
-                },
-            }
-        ]
-    },
-    optimization: {
-        sideEffects: false,
-        splitChunks: {
-            chunks     :'all',
-            minSize    : 30000,
-            minChunks  : 1,
-            cacheGroups: {
-                common: {
-                    name    : 'common',
-                    test    : /node_modules/,
-                    chunks  : 'initial',
-                    priority: -10,
-                    enforce : true
-                },
-                styles: {
-                    name   : 'styles',
-                    test   : /(\.less|\.css)$/,
-                    chunks : 'all',
-                    enforce: true,
+                }
+            },
+            {
+                test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+                use : {
+                    loader  : 'url-loader',
+                    options: {
+                        limit: 10000,
+                        name: 'media/[name].[hash:5].[ext]'
+                    }
                 }
             }
-        }
+        ]
     },
     performance: {
         hints: false
@@ -119,7 +106,7 @@ fontLoader.forEach((font) => {
         test    : new RegExp(`\\.${extension}$`),
         loader  : 'url-loader',
         options : {
-            name  : 'fonts/[name].[ext]',
+            name  : 'fonts/[name].[hash:5].[ext]',
             limit : 10000,
             mimetype
         }
