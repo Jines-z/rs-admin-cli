@@ -8,7 +8,6 @@ class Home extends Component {
         return (
             <div className='Home_'>
                 home
-                <input type='text' />
             </div>
         )
     }
