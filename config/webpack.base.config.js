@@ -7,6 +7,15 @@ const project             = require('../project.config.js')
 const isEsLint            = project.eslint
 const SRC_DIR             = path.join(project.basePath, project.srcDir)
 
+const fonts = [
+    ['otf'  , 'font/opentype'],
+    ['ttf'  , 'application/octet-stream'],
+    ['eot'  , 'application/vnd.ms-fontobject'],
+    ['svg'  , 'image/svg+xml'],
+    ['woff' , 'application/font-woff'],
+    ['woff2', 'application/font-woff2']
+]
+
 const ESLintRule = () => ({
     test: /(\.jsx|\.js)$/,
     use : {
@@ -50,7 +59,7 @@ const base = {
                 exclude: /node_modules/
             },
             {
-                test: /\.(png|PNG|jpe?g|JPG|gif|GIF|svg)(\?.*)?$/,
+                test: /\.(png|PNG|jpe?g|JPG|gif|GIF)(\?.*)?$/,
                 use : {
                     loader  : 'url-loader',
                     options : {
@@ -68,7 +77,24 @@ const base = {
                         name: 'media/[name].[hash:5].[ext]'
                     }
                 }
-            }
+            },
+            ...(() => {
+                let rules = []
+                fonts.forEach((item) => {
+                    rules.push({
+                        test: new RegExp(`\\.${item[0]}$`),
+                        use : {
+                            loader  : 'url-loader',
+                            options : {
+                                name    : 'fonts/[name].[hash:5].[ext]',
+                                limit   : 10000,
+                                mimetype: item[1]
+                            }
+                        }
+                    })
+                })
+                return rules
+            })()
         ]
     },
     performance: {
@@ -97,20 +123,5 @@ const base = {
         })
     ]
 }
-
-const fontLoader = [['woff', 'application/font-woff'], ['woff2', 'application/font-woff2'], ['otf', 'font/opentype'], ['ttf', 'application/octet-stream'], ['eot', 'application/vnd.ms-fontobject'], ['svg', 'image/svg+xml']]
-fontLoader.forEach((font) => {
-    let extension = font[0]
-    let mimetype = font[1]
-    base.module.rules.push({
-        test    : new RegExp(`\\.${extension}$`),
-        loader  : 'url-loader',
-        options : {
-            name  : 'fonts/[name].[hash:5].[ext]',
-            limit : 10000,
-            mimetype
-        }
-    })
-})
 
 module.exports = base

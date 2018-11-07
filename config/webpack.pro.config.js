@@ -1,7 +1,9 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const WebpackBar           = require('webpackbar')
 const CopyWebpackPlugin    = require('copy-webpack-plugin')
+const AutoPreFixer         = require('autoprefixer')
 const merge                = require('webpack-merge')
+const CssNaNo              = require('cssnano')
 const path                 = require('path')
 
 const base    = require('./webpack.base.config')
@@ -22,21 +24,19 @@ const production = {
                     {
                         loader : 'css-loader',
                         options: {
-                            importLoaders  : 1,
-                            minimize: {
-                                autoprefixer: {
-                                    add     : true,
-                                    remove  : true,
-                                    browsers: ['last 2 versions'],
-                                },
-                                discardComments : {
-                                    removeAll : true,
-                                },
-                                discardUnused: false,
-                                mergeIdents  : false,
-                                reduceIdents : false,
-                                safe         : true
-                            }
+                            importLoaders  : 2
+                        }
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: [
+                                AutoPreFixer({
+                                    browsers: ['> 1%', 'last 5 version'],
+                                    cascade : false
+                                }),
+                                CssNaNo()
+                            ]
                         }
                     },
                     {

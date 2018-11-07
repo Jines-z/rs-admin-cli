@@ -6,9 +6,6 @@ const development = {
     entry: {
         main: ['webpack-hot-middleware/client?path=./__webpack_hmr']
     },
-    output: {
-        filename: 'js/[name].js'
-    },
     mode: 'development',
     devtool: 'cheap-module-eval-source-map',
     module: {
