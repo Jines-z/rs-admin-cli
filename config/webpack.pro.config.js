@@ -1,9 +1,9 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const WebpackBar           = require('webpackbar')
 const CopyWebpackPlugin    = require('copy-webpack-plugin')
-const AutoPreFixer         = require('autoprefixer')
 const merge                = require('webpack-merge')
 const CssNaNo              = require('cssnano')
+const PostcssPresetEnv     = require('postcss-preset-env')
 const path                 = require('path')
 const base                 = require('./webpack.base.config')
 const {
@@ -34,11 +34,13 @@ const production = {
                         loader : 'postcss-loader',
                         options: {
                             plugins: [
-                                AutoPreFixer({
-                                    browsers: ['> 1%', 'last 5 version'],
-                                    cascade : false
+                                PostcssPresetEnv({
+                                    browsers: ['> 1%', 'last 5 version']
                                 }),
-                                CssNaNo()
+                                CssNaNo({
+                                    reduceIdents: false,
+                                    autoprefixer: false
+                                })
                             ]
                         }
                     },
@@ -63,7 +65,7 @@ const production = {
             cacheGroups: {
                 common: {
                     name    : 'common',
-                    test    : /node_modules/,
+                    test    : /[\\/]node_modules[\\/]/,
                     chunks  : 'all',
                     priority: -10,
                     enforce : true
@@ -76,8 +78,7 @@ const production = {
             minimal: false
         }),
         new MiniCssExtractPlugin({
-            filename     : 'css/[id].[chunkhash:5].css',
-            chunkFilename: 'css/[id].[contenthash:5].css'
+            filename: 'css/[name].[chunkhash:5].css'
         }),
         new CopyWebpackPlugin([{
             from: path.join(basePath, 'dll'),
