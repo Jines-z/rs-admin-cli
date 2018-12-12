@@ -4,24 +4,25 @@
   "description": "this is react start kit",
   "author": "bevelery <zhengaojin@live.cn> (https://github.com/beverle-y)",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cross-env NODE_ENV=development node bin/start",
     "dll": "npm run clean-dll && cross-env NODE_ENV=production node bin/dll",
     "build": "npm run clean-dist && cross-env NODE_ENV=production node bin/build",
-    "start": "cross-env NODE_ENV=development node bin/start",
     "clean-dist": "rimraf dist",
-    "clean-dll": "rimraf dll"
+    "clean-dll": "rimraf dll",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "check": "node bin/check"
   },
   "license": "MIT",
   "dependencies": {
     "antd": "3.8.0",
     "crypto-js": "^3.1.9-1",
     "js-cookie": "^2.2.0",
-    "mobx": "^4.5.1",
-    "mobx-react": "^5.3.1",
+    "mobx": "^5.7.0",
+    "mobx-react": "^5.4.2",
     "object-assign": "^4.1.1",
     "promise": "^8.0.2",
-    "react": "16.2.0",
-    "react-dom": "^16.5.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
     "react-loadable": "^5.5.0",
     "react-router-dom": "^4.3.1",
     "whatwg-fetch": "^2.0.4"

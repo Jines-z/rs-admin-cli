@@ -1,6 +1,6 @@
 import React from 'react'
-import logo from '../assets/logo.png'
 import SideMenu from '@/components/SideMenu'
+import logo from '@/assets/logo.png'
 
 const Left = () => {
     return (

@@ -1,26 +1,24 @@
 import React, { Component } from 'react'
-import { Provider, inject, observer } from 'mobx-react'
+import { inject, observer } from 'mobx-react'
 import { message } from 'antd'
 import CryptoJS from 'crypto-js'
-import FormBox from '../components/FormBox'
 import Cookies from 'js-cookie'
-import Store from '../store'
-import './index.less'
+import FormBox from '../components/FormBox'
+import '../index.less'
 
-@inject('Store')
+@inject('Login', 'Root')
 @observer
 class Login extends Component {
-    constructor() {
-        super()
-        this.store = new Store() // 在这里实例化，保证每次加载组件数据的初始化。
+    constructor(props) {
+        super(props)
     }
 
-    submit = (form, updateLoading) => {
+    submit = (form, setLoading) => {
         form.validateFields((err, values) => {
             if (!err) {
-                updateLoading(true)
+                setLoading(true)
                 this.timer = setTimeout(() => {
-                    updateLoading(false)
+                    setLoading(false)
                     let { userName, password } = values
                     if (userName == 'admin' && password == '123456') {
                         let message = `M&${userName}&${password}`
@@ -28,7 +26,7 @@ class Login extends Component {
                         let session = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA1(message, key))
                         Cookies.set('JSESSIONID', session, { expires: 1, path: '/' })
                         Cookies.set('userName', userName, { expires: 1, path: '/' })
-                        this.props.Store.updateName(userName)
+                        this.props.Root.updateName(userName)
                         this.props.history.push('/home')
                     } else {
                         message.error('账号：admin ； 密码：123456')
@@ -44,14 +42,12 @@ class Login extends Component {
 
     render() {
         return (
-            <Provider store={this.store}>
-                <div className='Login_wrap clearFix'>
-                    <div className='form P_auto'>
-                        <span className='font icon-react'></span>
-                        <FormBox submit={this.submit} />
-                    </div>
+            <div className='Login_wrap clearFix'>
+                <div className='form P_auto'>
+                    <span className='font icon-react'></span>
+                    <FormBox submit={this.submit} />
                 </div>
-            </Provider>
+            </div>
         )
     }
 }

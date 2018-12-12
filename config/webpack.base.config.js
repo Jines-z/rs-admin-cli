@@ -3,9 +3,13 @@ const path                = require('path')
 const HtmlWebpackPlugin   = require('html-webpack-plugin')
 const IncludeAssetsPlugin = require('html-webpack-include-assets-plugin')
 const ESLintFormatter     = require('eslint-friendly-formatter')
-const project             = require('../project.config.js')
-const isEsLint            = project.eslint
-const SRC_DIR             = path.join(project.basePath, project.srcDir)
+const {
+    esLint,
+    basePath,
+    srcDir,
+    publicPath,
+    outDir
+} = require('../project.config')
 
 const fonts = [
     ['otf'  , 'font/opentype'],
@@ -25,56 +29,53 @@ const ESLintRule = () => ({
         }
     },
     enforce: 'pre',
-    include: SRC_DIR,
+    include: srcDir,
     exclude: /node_modules/
 })
 
 const base = {
     entry: {
-        main: [SRC_DIR]
+        main: [srcDir]
     },
     output: {
-        path      : path.resolve(project.basePath, project.outDir),
-        publicPath: project.publicPath
+        publicPath,
+        path: outDir
     },
-    resolve : {
-        modules: [
-            project.srcDir,
-            'node_modules',
-        ],
+    resolve: {
         alias: {
-            '@': SRC_DIR
+            '@': srcDir
         },
-        extensions: ['*', '.js', '.jsx', '.json', '.less', '.css']
+        modules: [srcDir, 'node_modules'],
+        extensions: ['.js', '.jsx', '.json', '.less', '.css']
     },
-    module : {
+    module: {
         rules: [
-            ...(isEsLint ? [ESLintRule()] : []),
+            ...(esLint ? [ESLintRule()] : []),
             {
                 test: /(\.jsx|\.js)$/,
                 use : {
                     loader: 'babel-loader?cacheDirectory'
                 },
-                include: SRC_DIR,
+                include: srcDir,
                 exclude: /node_modules/
             },
             {
                 test: /\.(png|PNG|jpe?g|JPG|gif|GIF)(\?.*)?$/,
                 use : {
-                    loader  : 'url-loader',
-                    options : {
+                    loader : 'url-loader',
+                    options: {
                         limit: 10000,
-                        name: 'images/[name].[hash:5].[ext]'
+                        name : 'images/[name].[hash:5].[ext]'
                     }
                 }
             },
             {
                 test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
                 use : {
-                    loader  : 'url-loader',
+                    loader : 'url-loader',
                     options: {
                         limit: 10000,
-                        name: 'media/[name].[hash:5].[ext]'
+                        name : 'media/[name].[hash:5].[ext]'
                     }
                 }
             },
@@ -84,8 +85,8 @@ const base = {
                     rules.push({
                         test: new RegExp(`\\.${item[0]}$`),
                         use : {
-                            loader  : 'url-loader',
-                            options : {
+                            loader : 'url-loader',
+                            options: {
                                 name    : 'fonts/[name].[hash:5].[ext]',
                                 limit   : 10000,
                                 mimetype: item[1]
@@ -102,22 +103,22 @@ const base = {
     },
     plugins: [
         new webpack.DllReferencePlugin({
-            context : project.basePath,
-            manifest: path.resolve(project.basePath, 'dll', 'manifest.json')
+            context : basePath,
+            manifest: path.resolve(basePath, 'dll', 'manifest.json')
         }),
         new HtmlWebpackPlugin({
-            template : 'index.html',
-            inject   : true,
-            favicon  : path.resolve('favicon.ico'),
-            minify   : {
+            template: 'index.html',
+            inject  : true,
+            favicon : path.resolve('favicon.ico'),
+            minify  : {
                 collapseWhitespace: true,
             }
         }),
         new IncludeAssetsPlugin({
             assets: [{
-                path: 'dll',
-                glob: '*.js',
-                globPath: path.join(project.basePath, 'dll')
+                path    : 'dll',
+                glob    : '*.js',
+                globPath: path.join(basePath, 'dll')
             }],
             append: false
         })

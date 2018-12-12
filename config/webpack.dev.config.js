@@ -1,14 +1,18 @@
 const webpack = require('webpack')
 const merge   = require('webpack-merge')
 const base    = require('./webpack.base.config')
+const {
+    srcDir,
+    theme
+} = require('../project.config')
 
 const development = {
     entry: {
         main: ['webpack-hot-middleware/client?path=./__webpack_hmr']
     },
-    mode: 'development',
+    mode   : 'development',
     devtool: 'cheap-module-eval-source-map',
-    module: {
+    module : {
         rules: [
             {
                 test: /(\.less|\.css)$/,
@@ -17,9 +21,11 @@ const development = {
                 }, {
                     loader: 'css-loader'
                 }, {
-                    loader: 'less-loader',
+                    loader : 'less-loader',
                     options: {
-                        javascriptEnabled: true
+                        javascriptEnabled: true,
+                        paths: [srcDir],
+                        modifyVars: theme
                     }
                 }]
             }

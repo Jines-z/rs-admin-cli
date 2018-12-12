@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import { Route, Switch, withRouter } from 'react-router-dom'
 import { Provider } from 'mobx-react'
+import Cookies from 'js-cookie'
 import Layouts from './Layouts'
 import Login from './Login'
-import store from './store'
-import Cookies from 'js-cookie'
+import store from '@/store'
 
 @withRouter
 class Routers extends Component {
     constructor(props) {
         super(props)
-        this.pathname = this.props.location.pathname
+        this.pathname = props.location.pathname
     }
 
     checkJsessionID = () => {
@@ -43,7 +43,7 @@ class Routers extends Component {
 
     render() {
         return (
-            <Provider Store={store}>
+            <Provider { ...store }>
                 <Switch>
                     <Route path='/login' component={Login} />
                     <Route path='/' component={Layouts} />

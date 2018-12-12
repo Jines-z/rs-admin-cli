@@ -5,17 +5,20 @@ const AutoPreFixer         = require('autoprefixer')
 const merge                = require('webpack-merge')
 const CssNaNo              = require('cssnano')
 const path                 = require('path')
-
-const base    = require('./webpack.base.config')
-const project = require('../project.config')
+const base                 = require('./webpack.base.config')
+const {
+    basePath,
+    srcDir,
+    theme
+} = require('../project.config')
 
 const production = {
     output: {
         filename: 'js/[name].[chunkhash:5].js'
     },
-    mode: 'production',
+    mode   : 'production',
     devtool: false,
-    module: {
+    module : {
         rules: [
             {
                 test: /(\.less|\.css)$/,
@@ -28,7 +31,7 @@ const production = {
                         }
                     },
                     {
-                        loader: 'postcss-loader',
+                        loader : 'postcss-loader',
                         options: {
                             plugins: [
                                 AutoPreFixer({
@@ -40,9 +43,11 @@ const production = {
                         }
                     },
                     {
-                        loader: 'less-loader',
+                        loader : 'less-loader',
                         options: {
-                            javascriptEnabled: true
+                            javascriptEnabled: true,
+                            paths: [srcDir],
+                            modifyVars: theme
                         }
                     }
                 ]
@@ -59,15 +64,9 @@ const production = {
                 common: {
                     name    : 'common',
                     test    : /node_modules/,
-                    chunks  : 'initial',
+                    chunks  : 'all',
                     priority: -10,
                     enforce : true
-                },
-                styles: {
-                    name   : 'styles',
-                    test   : /(\.less|\.css)$/,
-                    chunks : 'all',
-                    enforce: true,
                 }
             }
         }
@@ -77,12 +76,12 @@ const production = {
             minimal: false
         }),
         new MiniCssExtractPlugin({
-            filename      : 'css/main.[chunkhash:5].css',
-            chunkFilename : 'css/main.[contenthash:5].css'
+            filename     : 'css/[id].[chunkhash:5].css',
+            chunkFilename: 'css/[id].[contenthash:5].css'
         }),
         new CopyWebpackPlugin([{
-            from : path.join(project.basePath, 'dll'),
-            to   : path.join(project.basePath, 'dist', 'dll')
+            from: path.join(basePath, 'dll'),
+            to  : path.join(basePath, 'dist', 'dll')
         }])
     ]
 }

@@ -1,72 +1,70 @@
-/*eslint-disable*/
-export default
-[{
-    key   : '/home',
-    title : '首页',
-    icon  : 'home'
-},{
-    key   : '/moduleManage',
-    title : '模块管理',
-    icon  : 'mokuai',
-    list  : [{
-        key   : '/moduleList',
-        title : '模块列表'
+export default [{
+    name: 'Home',
+    path: '/home',
+    icon: 'home'
+}, {
+    name: 'ModuleManage',
+    path: '/module',
+    icon: 'mokuai',
+    list: [{
+        name: 'ModuleList',
+        path: '/list'
     }]
 }, {
-    key   : '/functionManage',
-    title : '功能管理',
-    icon  : 'gongneng',
-    list  : [{
-        key   : '/functionList',
-        title : '功能列表'
+    name: 'FunctionManage',
+    path: '/function',
+    icon: 'gongneng',
+    list: [{
+        name: 'FunctionList',
+        path: '/list'
     }]
 }, {
-    key   : '/roleManage',
-    title : '角色管理',
-    icon  : 'biaoshilei_jiaosepeizhi',
-    list  : [{
-        key   : '/roleList',
-        title : '角色列表'
+    name: 'RoleManage',
+    path: '/role',
+    icon: 'biaoshilei_jiaosepeizhi',
+    list: [{
+        name: 'RoleList',
+        path: '/list'
     }]
 }, {
-    key   : '/employeesManage',
-    title : '员工管理',
-    icon  : 'yuangongguanli',
-    list  : [{
-        key   : '/employeesList',
-        title : '员工列表'
+    name: 'EmployeesManage',
+    path: '/employees',
+    icon: 'yuangongguanli',
+    list: [{
+        name: 'EmployeesList',
+        path: '/list'
     }]
 }, {
-    key   : '/userManage',
-    title : '用户管理',
-    icon  : 'yonghu',
-    list  : [{
-        key   : '/userList',
-        title : '用户列表'
+    name: 'UserManage',
+    path: '/user',
+    icon: 'yonghu',
+    list: [{
+        name: 'UserList',
+        path: '/list'
     }, {
-        key   : '/userOrder',
-        title : '用户订单'
+        name: 'UserOrder',
+        path: '/order'
     }, {
-        key   : '/userManager',
-        title : '用户管理'
+        name: 'UserManager',
+        path: '/manager'
     }, {
-        key   : '/endOrder',
-        title : '结束订单'
+        name: 'EndOrder',
+        path: '/e-order'
     }]
 }, {
-    key   : '/visualManage',
-    title : '可视化管理',
-    icon  : 'yanjing',
-    list  : [{
-        key   : '/visualList',
-        title : '可视化列表'
+    name: 'VisualManage',
+    path: '/visual',
+    icon: 'yanjing',
+    list: [{
+        name: 'VisualList',
+        path: '/list'
     }]
 }, {
-    key   : '/priceManage',
-    title : '价格配置管理',
-    icon  : 'wuliaojiageleixing',
-    list  : [{
-        key   : '/priceConfig',
-        title : '价格配置'
+    name: 'PriceManage',
+    path: '/price',
+    icon: 'wuliaojiageleixing',
+    list: [{
+        name: 'PriceConfig',
+        path: '/config'
     }]
 }]
