@@ -4,6 +4,7 @@ html, body {
   width: 100%;
   height: 100%;
   font-size: 14px !important;
+  color: @textColor;
   background-color: #fff;
   font-family: '微软雅黑', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -37,7 +38,7 @@ hr {
 
 a {
   background-color: transparent;
-  color: @FontColor;
+  color: @textColor;
 }
 
 b, strong {
@@ -89,17 +90,17 @@ button:-moz-focusring, [type="button"]:-moz-focusring, [type="reset"]:-moz-focus
 }
 
 ::-webkit-scrollbar-track-piece {
-  background: @scrollBarUnderBg;
+  background: @scrollBar_Under;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: @scrollBarColor;
+  background: @scrollBar;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-corner {
-  background: @scrollBarUnderBg;
+  background: @scrollBar_Under;
 }
 
 ::-webkit-resizer {
