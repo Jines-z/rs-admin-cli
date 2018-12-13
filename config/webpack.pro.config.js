@@ -3,7 +3,7 @@ const WebpackBar           = require('webpackbar')
 const CopyWebpackPlugin    = require('copy-webpack-plugin')
 const merge                = require('webpack-merge')
 const CssNaNo              = require('cssnano')
-const PostcssPresetEnv     = require('postcss-preset-env')
+const PostCssPresetEnv     = require('postcss-preset-env')
 const path                 = require('path')
 const base                 = require('./webpack.base.config')
 const {
@@ -34,7 +34,7 @@ const production = {
                         loader : 'postcss-loader',
                         options: {
                             plugins: [
-                                PostcssPresetEnv({
+                                PostCssPresetEnv({
                                     browsers: ['> 1%', 'last 5 version']
                                 }),
                                 CssNaNo({
@@ -63,8 +63,8 @@ const production = {
             minSize    : 30000,
             minChunks  : 1,
             cacheGroups: {
-                common: {
-                    name    : 'common',
+                vendor: {
+                    name    : 'vendor',
                     test    : /[\\/]node_modules[\\/]/,
                     chunks  : 'all',
                     priority: -10,
