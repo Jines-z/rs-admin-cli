@@ -35,6 +35,7 @@ const ESLintRule = () => ({
 
 const base = {
     entry: {
+        normalize: [path.resolve(srcDir, 'normalize')],
         main: [srcDir]
     },
     output: {
