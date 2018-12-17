@@ -36,11 +36,16 @@ npm run build
 
 #### Publish CDN (Recommend)
 
-Change the "publicPath" in "project.config.js" to the absolute path of the server.
+Change the `publicPath` in "project.config.js" to the absolute path of the server.
 
 #### Publish statics
 
-Modify the "webpack" configuration to place all files in the same directory.
+Modify the `webpack` configuration to place all files in the same directory.
+
+## IE
+You need to downgrade `mobx` to v4.
+
+"IE9" does not support "CSS3", so the animation will fail.
 
 ## Ps
 (It is now ready to be injected dynamically without having to change it manually)
@@ -52,7 +57,7 @@ Modify the "webpack" configuration to place all files in the same directory.
 -   Upgrade to v2.0.0
 
     -   Upgrade react@16.6.3 and mobx@5.7.0
-    -   Refactor mobx (The "mobx" in "v1" applies to mobile)
+    -   Refactor `mobx` (The `mobx` in "v1" applies to mobile)
     -   Added theme configuration in "project.config.js"
     -   Streamline the path
     -   Refactor styles folder
