@@ -35,8 +35,7 @@ const ESLintRule = () => ({
 
 const base = {
     entry: {
-        normalize: [path.resolve(srcDir, 'normalize')],
-        main: [srcDir]
+        main: ['@babel/polyfill', srcDir]
     },
     output: {
         publicPath,

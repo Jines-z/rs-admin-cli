@@ -4,6 +4,7 @@ import { message } from 'antd'
 import CryptoJS from 'crypto-js'
 import Cookies from 'js-cookie'
 import FormBox from '../components/FormBox'
+import service from '@/service'
 import '../index.less'
 
 @inject('Login', 'Root')
@@ -14,24 +15,27 @@ class Login extends Component {
     }
 
     submit = (form, setLoading) => {
-        form.validateFields((err, values) => {
+        form.validateFields(async(err, values) => {
             if (!err) {
                 setLoading(true)
-                this.timer = setTimeout(() => {
-                    setLoading(false)
-                    let { userName, password } = values
-                    if (userName == 'admin' && password == '123456') {
-                        let message = `M&${userName}&${password}`
-                        let key = 'react_starter'
-                        let session = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA1(message, key))
-                        Cookies.set('JSESSIONID', session, { expires: 1, path: '/' })
-                        Cookies.set('userName', userName, { expires: 1, path: '/' })
-                        this.props.Root.updateName(userName)
-                        this.props.history.push('/home')
-                    } else {
-                        message.error('账号：admin ； 密码：123456')
-                    }
-                }, 1500)
+                let { userName, password } = values
+                const param = {
+                    userName,
+                    password
+                }
+                const { success } = await service.login(param)
+                setLoading(false)
+                if (success) {
+                    let message = `M&${userName}&${password}`
+                    let key = 'react_starter'
+                    let session = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA1(message, key))
+                    Cookies.set('JSESSIONID', session, { expires: 1, path: '/' })
+                    Cookies.set('userName', userName, { expires: 1, path: '/' })
+                    this.props.Root.updateName(userName)
+                    this.props.history.push('/home')
+                } else {
+                    message.error('账号：admin ； 密码：123456')
+                }
             }
         })
     }
