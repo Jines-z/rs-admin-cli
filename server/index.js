@@ -22,7 +22,7 @@ const devMiddleware = webpackDevMiddleware(compiler, {
     stats   : 'errors-only',
 })
 
-devMiddleware.waitUntilValid(()=>{
+devMiddleware.waitUntilValid(() => {
     opn('http://localhost:' + port)
 })
 
