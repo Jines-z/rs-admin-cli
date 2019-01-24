@@ -12,9 +12,7 @@ class FromBox extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        let { setLoading } = this.props.Login
-        let { form } = this.props
-        this.props.submit(form, setLoading)
+        this.props.submit(this.props.form)
     }
 
     render() {
