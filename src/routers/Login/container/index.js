@@ -24,9 +24,12 @@ class Login extends Component {
                     userName,
                     password
                 }
-                const { success } = await service.login(param)
+                const result = await service.login(param).catch(err => {
+                    Login.setLoading(false)
+                    throw err
+                })
                 Login.setLoading(false)
-                if (success) {
+                if (result.success) {
                     let message = `M&${userName}&${password}`
                     let key = 'react_starter'
                     let session = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA1(message, key))
