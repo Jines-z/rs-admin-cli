@@ -35,7 +35,7 @@ const production = {
                         options: {
                             plugins: [
                                 PostCssPresetEnv({
-                                    browsers: ['> 1%', 'last 5 version']
+                                    browsers: ['> 1%', 'last 5 version', 'ie > 8']
                                 }),
                                 CssNaNo({
                                     reduceIdents: false,

@@ -1,6 +1,6 @@
 const proxy = {
-    '/example': {
-        target: 'http://0.0.0.0',
+    '/mock': {
+        target: 'https://www.easy-mock.com',
         secure: false,
         changeOrigin: true
     }
