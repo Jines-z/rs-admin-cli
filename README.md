@@ -6,7 +6,7 @@
 
 简体中文 | [English](https://github.com/beverle-y/react-starter-kit/blob/master/README-en.md)
 
-**预览：**[https://beverle-y.github.io/react-starter-kit](https://beverle-y.github.io/react-starter-kit)
+预览：[https://beverle-y.github.io/react-starter-kit](https://beverle-y.github.io/react-starter-kit)
 
 ## Quick Start
 #### Down

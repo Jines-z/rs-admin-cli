@@ -7,7 +7,7 @@
 [简体中文](https://github.com/beverle-y/react-starter-kit) | English
 
 
-**Preview：**[https://beverle-y.github.io/react-starter-kit](https://beverle-y.github.io/react-starter-kit)
+Preview：[https://beverle-y.github.io/react-starter-kit](https://beverle-y.github.io/react-starter-kit)
 
 ## Quick Start
 #### Down
