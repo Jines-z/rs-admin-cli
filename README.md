@@ -43,9 +43,11 @@ Change the `publicPath` in "project.config.js" to the absolute path of the serve
 Modify the `webpack` configuration to place all files in the same directory.
 
 ## IE
-You need to downgrade `mobx` to v4.
+You need to downgrade `mobx` to v4.9.2.
 
-"IE9" does not support "CSS3", so the animation will fail.
+Ie9 does not support `transition` and `animation` in css3, so the animation will fail.
+
+It does not support IE8 and below.
 
 ## Ps
 (It is now ready to be injected dynamically without having to change it manually)
