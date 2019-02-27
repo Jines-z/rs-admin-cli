@@ -4,9 +4,10 @@
 [![Ant Design](https://img.shields.io/badge/ant--design-^3.8.0-yellowgreen.svg?style=flat-square)](https://github.com/ant-design/ant-design)
 [![Mobx](https://img.shields.io/badge/mobx-^4.5.1-orange.svg?style=flat-square)](https://github.com/mobxjs/mobx)
 
-**Preview：**[https://beverle-y.github.io/react-starter-kit](https://beverle-y.github.io/react-starter-kit)
+简体中文 | [English](https://github.com/beverle-y/react-starter-kit/blob/master/README-en.md)
 
-**With redux：**[react-redux-starter-kit](https://github.com/beverle-y/react-redux-starter-kit)
+**预览：**[https://beverle-y.github.io/react-starter-kit](https://beverle-y.github.io/react-starter-kit)
+
 ## Quick Start
 #### Down
 ~~~
@@ -19,7 +20,7 @@ yarn install
 ~~~
 
 #### Dll
-The first time, you need to packaged the vendor and only run it once. When the vendor changes, it needs to be repackaged.
+第一次运行时，需要打包 vendor。当 vendor 被改变时，需要重新打包。
 ~~~
 npm run dll
 ~~~
@@ -34,64 +35,65 @@ npm start
 npm run build
 ~~~
 
-#### Publish CDN (Recommend)
+#### 使用CDN (推荐)
 
-Change the `publicPath` in "project.config.js" to the absolute path of the server.
+将 project.config.js 内的 `publicPath` 改为服务器绝对路径。
 
-#### Publish statics
+#### 使用相对路径
 
-Modify the `webpack` configuration to place all files in the same directory.
+若没有CDN，需修改 webpack 配置，将所有文件放置在同一目录下。
 
 ## IE
-You need to downgrade `mobx` to v4.9.2.
 
-Ie9 does not support `transition` and `animation` in css3, so the animation will fail.
+若需要兼容 IE，将 `mobx` 的版本降至 v4.9.2。
 
-It does not support IE8 and below.
+IE9 不支持 CSS3 中的 `transition` 和 `animation`，因此动画会失效。
+
+不支持 IE8 及以下版本
 
 ## Ps
-(It is now ready to be injected dynamically without having to change it manually)
+已经可以动态注入 dll，无需手动更改。
 
 ~~关于 dll 的说明：本项目使用 yarn 下载依赖包，有些同学习惯用 npm、cnpm，这样因为没有 lock 文件会导致依赖包的版本不同，致使 dll 的 hash 不同于本项目，所以有些人会遇到 404 或者资源没找到等情况，这种情况下只要改一下 html 引用的路径即可。~~
 
 ## Log
 `2019-02-15`
--   Added timeout or exception handling
--   Added webpackChunkName
+-   添加超时/异常处理
+-   添加 webpackChunkName
 
 `2019-01-24`
--   Use the mock to replace the setTimeout to simulate landing
--   Added proxy and flyio, deleted fetch
+-   使用 mock 替换 setTimeout 来模拟登录
+-   添加 proxy 和 flyio, 删除 fetch
 
 `2018-12-17`
--   Compatible with IE
+-   兼容IE
 
 `2018-12-12`
--   Upgrade to v2.0.0
+-   升级至 v2.0.0
 
-    -   Upgrade react@16.6.3 and mobx@5.7.0
-    -   Refactor `mobx` (The `mobx` in "v1" applies to mobile)
-    -   Added theme configuration in "project.config.js"
-    -   Streamline the path
-    -   Refactor styles folder
+    -   升级 react@16.6.3 和 mobx@5.7.0
+    -   重构了 `mobx` (v1 版本中的使用方法适用于移动端)
+    -   在 project.config.js 中添加了主题配置
+    -   简化了 path
+    -   重新设计了 styles 文件夹的结构
 
 `2018-10-26`
--   Add ESLint (You can control the switch in "project.config.js")
+-   添加 ESLint (可以在 project.config.js" 控制是否开启)
 
 `2018-10-22`
--   Upgrade to @babel 7
+-   升级 @babel 7
 
 `2018-10-18`
--   Dynamically inject `dll` to index.html at compile time
+-   编译时，动态注入 dll
 
 `2018-07-23`
--   With redux：[react-redux-starter-kit](https://github.com/beverle-y/react-redux-starter-kit)
+-   Redux版：[react-redux-starter-kit](https://github.com/beverle-y/react-redux-starter-kit)
 
 `2018-07-20`
--   Modify the location of some folders
+-   修改了一些文件夹的位置
 
 `2018-05-11`
--   Upgrade to webpack@4.21.0
+-   升级 webpack 到 v4.21.0
 
     -   development (time)：4.8s -> 3.8s
     -   production (time)：11.5s -> 5.4s
@@ -103,6 +105,4 @@ It does not support IE8 and below.
 -   Message
 
 `2018-03-28`
--   Repairing the Right lacks the route props
-
-
+-   修复 Right 组件缺少props
