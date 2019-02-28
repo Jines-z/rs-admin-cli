@@ -6,7 +6,6 @@
 
 [简体中文](https://github.com/beverle-y/react-starter-kit) | English
 
-
 Preview：[https://beverle-y.github.io/react-starter-kit](https://beverle-y.github.io/react-starter-kit)
 
 ## Quick Start
@@ -40,9 +39,9 @@ npm run build
 
 Change the `publicPath` in "project.config.js" to the absolute path of the server.
 
-#### Publish statics
+#### Relative path
 
-Modify the `webpack` configuration to place all files in the same directory.
+Use this branch [relative](https://github.com/beverle-y/react-starter-kit/tree/relative)
 
 ## IE
 You need to downgrade `mobx` to v4.9.2.
@@ -50,11 +49,6 @@ You need to downgrade `mobx` to v4.9.2.
 Ie9 does not support `transition` and `animation` in css3, so the animation will fail.
 
 It does not support IE8 and below.
-
-## Ps
-(It is now ready to be injected dynamically without having to change it manually)
-
-~~关于 dll 的说明：本项目使用 yarn 下载依赖包，有些同学习惯用 npm、cnpm，这样因为没有 lock 文件会导致依赖包的版本不同，致使 dll 的 hash 不同于本项目，所以有些人会遇到 404 或者资源没找到等情况，这种情况下只要改一下 html 引用的路径即可。~~
 
 ## Log
 `2019-02-15`

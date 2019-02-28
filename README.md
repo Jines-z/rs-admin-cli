@@ -39,9 +39,9 @@ npm run build
 
 将 project.config.js 内的 `publicPath` 改为服务器绝对路径。
 
-#### 使用相对路径
+#### 相对路径
 
-若没有CDN，需修改 webpack 配置，将所有文件放置在同一目录下。
+请使用该分支[relative](https://github.com/beverle-y/react-starter-kit/tree/relative)
 
 ## IE
 
@@ -50,11 +50,6 @@ npm run build
 IE9 不支持 CSS3 中的 `transition` 和 `animation`，因此动画会失效。
 
 不支持 IE8 及以下版本
-
-## Ps
-已经可以动态注入 dll，无需手动更改。
-
-~~关于 dll 的说明：本项目使用 yarn 下载依赖包，有些同学习惯用 npm、cnpm，这样因为没有 lock 文件会导致依赖包的版本不同，致使 dll 的 hash 不同于本项目，所以有些人会遇到 404 或者资源没找到等情况，这种情况下只要改一下 html 引用的路径即可。~~
 
 ## Log
 `2019-02-15`
