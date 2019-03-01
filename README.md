@@ -37,7 +37,7 @@ npm run build
 
 #### 使用CDN (推荐)
 
-将 project.config.js 内的 `publicPath` 改为服务器绝对路径。
+将 project.config.js 内的 `publicPath` 改为静态资源地址。
 
 #### 相对路径
 

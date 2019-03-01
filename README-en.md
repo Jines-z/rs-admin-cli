@@ -37,7 +37,7 @@ npm run build
 
 #### Publish CDN (Recommend)
 
-Change the `publicPath` in "project.config.js" to the absolute path of the server.
+Change the `publicPath` in "project.config.js" to the static resource address.
 
 #### Relative path
 
