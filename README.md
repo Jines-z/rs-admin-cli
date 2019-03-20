@@ -4,14 +4,14 @@
 [![Ant Design](https://img.shields.io/badge/ant--design-^3.8.0-yellowgreen.svg?style=flat-square)](https://github.com/ant-design/ant-design)
 [![Mobx](https://img.shields.io/badge/mobx-^4.5.1-orange.svg?style=flat-square)](https://github.com/mobxjs/mobx)
 
-简体中文 | [English](https://github.com/beverle-y/react-starter-kit/blob/master/README-en.md)
+简体中文 | [English](https://github.com/jines-z/react-starter-kit/blob/master/README-en.md)
 
-预览：[https://beverle-y.github.io/react-starter-kit](https://beverle-y.github.io/react-starter-kit)
+预览：[https://jines-z.github.io/react-starter-kit](https://jines-z.github.io/react-starter-kit)
 
 ## Quick Start
 #### Down
 ~~~
-git clone https://github.com/bevelery/react-starter-kit.git
+git clone https://github.com/jines-z/react-starter-kit.git
 ~~~
 
 #### Install
@@ -41,7 +41,7 @@ npm run build
 
 #### 相对路径
 
-请使用该分支[relative](https://github.com/beverle-y/react-starter-kit/tree/relative)
+请使用该分支[relative](https://github.com/jines-z/react-starter-kit/tree/relative)
 
 ## IE
 
@@ -82,7 +82,7 @@ IE9 不支持 CSS3 中的 `transition` 和 `animation`，因此动画会失效�
 -   编译时，动态注入 dll
 
 `2018-07-23`
--   Redux版：[react-redux-starter-kit](https://github.com/beverle-y/react-redux-starter-kit)
+-   Redux版：[react-redux-starter-kit](https://github.com/jines-z/react-redux-starter-kit)
 
 `2018-07-20`
 -   修改了一些文件夹的位置

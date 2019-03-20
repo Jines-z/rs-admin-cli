@@ -4,14 +4,14 @@
 [![Ant Design](https://img.shields.io/badge/ant--design-^3.8.0-yellowgreen.svg?style=flat-square)](https://github.com/ant-design/ant-design)
 [![Mobx](https://img.shields.io/badge/mobx-^4.5.1-orange.svg?style=flat-square)](https://github.com/mobxjs/mobx)
 
-[简体中文](https://github.com/beverle-y/react-starter-kit) | English
+[简体中文](https://github.com/jines-z/react-starter-kit) | English
 
-Preview：[https://beverle-y.github.io/react-starter-kit](https://beverle-y.github.io/react-starter-kit)
+Preview：[https://jines-z.github.io/react-starter-kit](https://jines-z.github.io/react-starter-kit)
 
 ## Quick Start
 #### Down
 ~~~
-git clone https://github.com/bevelery/react-starter-kit.git
+git clone https://github.com/jines-z/react-starter-kit.git
 ~~~
 
 #### Install
@@ -41,7 +41,7 @@ Change the `publicPath` in "project.config.js" to the static resource address.
 
 #### Relative path
 
-Use this branch [relative](https://github.com/beverle-y/react-starter-kit/tree/relative)
+Use this branch [relative](https://github.com/jines-z/react-starter-kit/tree/relative)
 
 ## IE
 You need to downgrade `mobx` to v4.9.2.
@@ -81,7 +81,7 @@ It does not support IE8 and below.
 -   Dynamically inject `dll` to index.html at compile time
 
 `2018-07-23`
--   With redux：[react-redux-starter-kit](https://github.com/beverle-y/react-redux-starter-kit)
+-   With redux：[react-redux-starter-kit](https://github.com/jines-z/react-redux-starter-kit)
 
 `2018-07-20`
 -   Modify the location of some folders
