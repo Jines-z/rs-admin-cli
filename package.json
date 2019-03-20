@@ -1,8 +1,8 @@
 {
   "name": "react-starter-kit",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "this is react start kit",
-  "author": "bevelery <zhengaojin@live.cn> (https://github.com/beverle-y)",
+  "author": "jines-z <zhengaojin@live.cn> (https://github.com/jines-z)",
   "scripts": {
     "start": "cross-env NODE_ENV=development node bin/start",
     "dll": "npm run clean-dll && cross-env NODE_ENV=production node bin/dll",
