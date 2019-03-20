@@ -4,6 +4,7 @@ const HtmlWebpackPlugin   = require('html-webpack-plugin')
 const IncludeAssetsPlugin = require('html-webpack-include-assets-plugin')
 const ESLintFormatter     = require('eslint-friendly-formatter')
 const {
+    env,
     esLint,
     basePath,
     srcDir,
@@ -102,6 +103,9 @@ const base = {
         hints: false
     },
     plugins: [
+        new webpack.DefinePlugin({
+            __ENV__: JSON.stringify(env)
+        }),
         new webpack.DllReferencePlugin({
             context : basePath,
             manifest: path.resolve(basePath, 'dll', 'manifest.json')

@@ -13,6 +13,7 @@ module.exports = {
         'border-radius-sm'    : '2px',
         'font-family'         : 'Microsoft YaHei'
     },
+    env        : NODE_ENV,
     basePath   : __dirname,
     srcDir     : path.resolve(__dirname, 'src'),
     outDir     : path.resolve(__dirname, 'dist'),

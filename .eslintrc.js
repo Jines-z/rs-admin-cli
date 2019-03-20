@@ -14,7 +14,8 @@ module.exports = {
         JSBridge : true,
         window   : true,
         document : true,
-        wx       : true
+        wx       : true,
+        __ENV__  : true
     },
     parserOptions: {
         sourceType  : 'module',
