@@ -11,11 +11,10 @@ module.exports = {
         'plugin:react/recommended'
     ],
     globals: {
-        JSBridge : true,
-        window   : true,
-        document : true,
-        wx       : true,
-        __ENV__  : true
+        window    : true,
+        document  : true,
+        __ENV__   : true,
+        __BRANCH__: true
     },
     parserOptions: {
         sourceType  : 'module',
@@ -49,11 +48,12 @@ module.exports = {
         'eol-last'                          : 'off',
         'no-useless-escape'                 : 'off',
         'no-useless-constructor'            : 'off',
-        'semi'                              : ['error', "never"],
+        'semi'                              : ['error', 'never'],
         'arrow-parens'                      : ['error', 'as-needed'],
         'no-multiple-empty-lines'           : ['error', { 'max': 1 }],
         'space-before-function-paren'       : ['error', 'never'],
         'no-trailing-spaces'                : ['error', { 'skipBlankLines': true }],
+        'prefer-promise-reject-errors'      : ['error', { 'allowEmptyReject': true }],
         'jsx-quotes'                        : ['error', 'prefer-single'],
         'no-unreachable'                    : process.env.NODE_ENV === 'production' ? 'error' : 'off',
         'no-debugger'                       : process.env.NODE_ENV === 'production' ? 'error' : 'off',
@@ -61,7 +61,7 @@ module.exports = {
         'react/prop-types'                  : 'off',
         "react/no-array-index-key"          : 'off',
         'react/jsx-closing-bracket-location': 'error',
-        "react/self-closing-comp"           : ['error', {"component": true, "html": false}],
-        'react/jsx-tag-spacing'             : ['error', {'beforeSelfClosing': 'always'}]
+        "react/self-closing-comp"           : ['error', { 'component': true, 'html': false }],
+        'react/jsx-tag-spacing'             : ['error', { 'beforeSelfClosing': 'always' }]
     }
 }

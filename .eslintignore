@@ -1,8 +1,4 @@
 /dist/
-/bin/
 /dll/
-/server/
-/config/
 project.config.js
-webpack.config.js
-webpack.dll.config.js
+proxy.config.js
