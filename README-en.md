@@ -1,8 +1,8 @@
 ![react-starter-kit](https://jines-z.github.io/images/rs_logo.png)
 ---------------------------------------------------------------
-[![React](https://img.shields.io/badge/react-^16.2.0-brightgreen.svg?style=flat-square)](https://github.com/facebook/react)
+[![React](https://img.shields.io/badge/react-^16.8.4-brightgreen.svg?style=flat-square)](https://github.com/facebook/react)
 [![Ant Design](https://img.shields.io/badge/ant--design-^3.8.0-yellowgreen.svg?style=flat-square)](https://github.com/ant-design/ant-design)
-[![Mobx](https://img.shields.io/badge/mobx-^4.5.1-orange.svg?style=flat-square)](https://github.com/mobxjs/mobx)
+[![Mobx](https://img.shields.io/badge/mobx-^5.9.4-orange.svg?style=flat-square)](https://github.com/mobxjs/mobx)
 
 [简体中文](https://github.com/jines-z/react-starter-kit) | English
 
@@ -51,6 +51,11 @@ Ie9 does not support `transition` and `animation` in css3, so the animation will
 It does not support IE8 and below.
 
 ## Log
+`2019-05-24`
+-   Upgrade to v2.2
+-   Extract the package file from the local to the npm package and add version detection and updates
+-   Expanded project configuration file
+
 `2019-02-15`
 -   Added timeout or exception handling
 -   Added webpackChunkName
