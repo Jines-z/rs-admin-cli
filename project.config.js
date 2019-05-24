@@ -1,3 +1,16 @@
+/* ========================================================
+
+    ** 配置文件 **
+
+    1、theme  ：antd主题配置
+    2、html   ：在 index.html 中，使用 <%= htmlWebpackPlugin.options.xxx %> 来访问 html 中的属性，可扩展
+    3、global ：全局变量，使用时前后加“__”，字母变大写，例如 __ENV__，可扩展
+    4、branch ：当前所在分支，可用于打包时判断（测试/线上）环境，等等
+    5、proxy  ：本地代理，请在 proxy.config.js 中配置你需要代理的地址
+    6、env    ：环境变量，开发环境为 development，生产环境为 production
+    7、vendor ：用于生成 dll 包，当 (dll不存在) (vendor被改变) (包的版本被更换) 时，请 npm run dll
+
+   ====================================================== */
 const NODE_ENV = process.env.NODE_ENV || 'development'
 const path     = require('path')
 const cp       = require('child_process')
@@ -17,13 +30,10 @@ module.exports = {
     },
     html: {
         title: 'REACT STARTER',
-        fav  : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAeFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVyEiIAAAAJ3RSTlMA9+8GFA2G5jLqKpBhbzkaeamZf9hK39PJtKOuWB/OvFJPQCXCaUSbJarlAAACSklEQVRYw+3W2bKjIBQFUBAwiIoDmmhGM/r/f9jpvqmbcjPdrrx19X5VlxxBDuSfCdtvaBJJdkrrXjDmBu6rOZrVacwnXbmBAgBf6JBqEQTiWdeHz4CZNjIMxIXxEgbiwk6GgbjQss+AuZMfAkkq2EfAfDzwBVBmUOQiDiDrdRA4Fkp+RV1Mu3bUUOyDQKPe13ilc6tCaso48E6VJgikdRDYXskiqvlLoAWAFGFAWAD+cecIgDWmPAIk9/0CyGGujQBgD0Cm1RKAEdTws/AcgKESQaCEAfQdfIJcsGAJ98gA1j3csAWgWF42uBIbAUADwPsTM8FlnsHzm55EgDMhjHMhBFO1/S9RQ34A6KHbPNMl1N5NuAWc4BU9IfLo61CGE0w1wDJ5PFFDnfvpreDEBm7wkt8b/yVzPN61D0YcwNEBVKNV/GY7ubvzAeZ5fXH9okkr4XEvcJTkGQ3zt1PEFwXA8AcQUEM2eQGduQBWg9vynwI3+TWwASrrfUAPwPiqdotL2HvGSqB9v/bUcoWwBygQeN0oT7A+SjcgSuoGSO7cBzBM1D6ggKXQTU6AGwC+24IccQjMCaQA5BV5xQDQaSeQe4Fphacj7gAOjRdQO9yPtQO4jl5AGKsp2kMQ6jb7APJIQBiUDcjO/xbEZ1oyC9DUD/CUgnCSCFSPAEB6BOgdges5BCiozz7/EF3YQKBvzqsCgKm2ATj+wBBgJu95cK71GoHNfgnUrQ1A34NsxQJImyDA0mQOt3fTJovQrF4AZUfhhuFM/uc7vwBxpiYAlw7BzgAAAABJRU5ErkJggg=='
-    },
-    global: { // 全局变量， __ENV__: 当前环境    __BRANCH__: 当前分支
-        env: NODE_ENV,
-        branch
+        fav: 'https://jines-z.github.io/images/favicon.ico'
     },
     proxy,
+    global     : { env: NODE_ENV, branch },
     port       : 8080,
     host       : '0.0.0.0',
     env        : NODE_ENV,
@@ -34,5 +44,4 @@ module.exports = {
     publicPath : NODE_ENV === 'development' ? './' : 'https://jines-z.github.io/react-starter-kit/',
     esLint     : true,
     vendor     : ['react', 'react-dom', 'react-router-dom', 'react-loadable', 'mobx', 'mobx-react', 'crypto-js', 'js-cookie', 'flyio'],
-    // 当 (dll不存在) (vendor被改变) (包的版本被更换) 时，请 npm run dll。
 }
