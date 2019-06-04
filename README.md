@@ -39,10 +39,6 @@ npm run build
 
 将 project.config.js 内的 `publicPath` 改为静态资源地址。
 
-#### 相对路径
-
-请使用该分支[relative](https://github.com/jines-z/react-starter-kit/tree/relative)
-
 ## IE
 
 若需要兼容 IE，将 `mobx` 的版本降至 v4.9.2。
@@ -85,9 +81,6 @@ IE9 不支持 CSS3 中的 `transition` 和 `animation`，因此动画会失效�
 
 `2018-10-18`
 -   编译时，动态注入 dll
-
-`2018-07-23`
--   Redux版：[react-redux-starter-kit](https://github.com/jines-z/react-redux-starter-kit)
 
 `2018-07-20`
 -   修改了一些文件夹的位置

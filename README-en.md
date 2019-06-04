@@ -39,10 +39,6 @@ npm run build
 
 Change the `publicPath` in "project.config.js" to the static resource address.
 
-#### Relative path
-
-Use this branch [relative](https://github.com/jines-z/react-starter-kit/tree/relative)
-
 ## IE
 You need to downgrade `mobx` to v4.9.2.
 
@@ -84,9 +80,6 @@ It does not support IE8 and below.
 
 `2018-10-18`
 -   Dynamically inject `dll` to index.html at compile time
-
-`2018-07-23`
--   With redux：[react-redux-starter-kit](https://github.com/jines-z/react-redux-starter-kit)
 
 `2018-07-20`
 -   Modify the location of some folders
