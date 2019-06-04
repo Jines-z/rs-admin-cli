@@ -2,8 +2,8 @@
 
     ** 配置文件 **
 
-    1、theme    ：主题配置
-    2、html     ：在 index.html 中，使用 <%= htmlWebpackPlugin.options.xxx %> 来访问 html 中的属性，可扩展
+    1、html     ：在 index.html 中，使用 <%= htmlWebpackPlugin.options.xxx %> 来访问 html 中的属性，可扩展
+    2、theme    ：主题配置
     3、global   ：全局变量，使用时前后加“__”，字母变大写，例如 __ENV__，可扩展
     4、branch   ：所在分支，可用于打包时判断（测试/线上）环境，等等
     5、proxy    ：本地代理，请在 proxy.config.js 中配置你需要代理的地址
@@ -19,6 +19,10 @@ const proxy    = require('./proxy.config')
 const branch   = cp.execSync('git rev-parse --abbrev-ref HEAD').toString().replace(/\s+/, '')
 
 module.exports = {
+    html: {
+        title: 'REACT STARTER',
+        fav: 'https://jines-z.github.io/images/favicon.ico'
+    },
     theme: {
         'primary-color'       : '#495060',
         'menu-dark-bg'        : '#495060',
@@ -28,10 +32,6 @@ module.exports = {
         'border-radius-base'  : '2px',
         'border-radius-sm'    : '2px',
         'font-family'         : 'Microsoft YaHei'
-    },
-    html: {
-        title: 'REACT STARTER',
-        fav: 'https://jines-z.github.io/images/favicon.ico'
     },
     proxy,
     global     : { env: NODE_ENV, branch },
