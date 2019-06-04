@@ -3691,7 +3691,7 @@ http-errors@1.7.2, http-errors@~1.7.2:
     statuses ">= 1.5.0 < 2"
     toidentifier "1.0.0"
 
-http-proxy-middleware@^0.19.1:
+http-proxy-middleware@0.19.1:
   version "0.19.1"
   resolved "https://registry.yarnpkg.com/http-proxy-middleware/-/http-proxy-middleware-0.19.1.tgz#183c7dc4aa1479150306498c210cdaf96080a43a"
   integrity sha512-yHYTgWMQO8VvwNS22eLLloAkvungsKdKTLO8AJlftYIKNfJr3GK3zK0ZCfzDDGUBttdGc8xFy1mCitvNKQtC3Q==
@@ -7017,10 +7017,10 @@ rmc-feedback@^2.0.0:
     babel-runtime "6.x"
     classnames "^2.2.5"
 
-rs-compiler@^1.1.8:
-  version "1.1.8"
-  resolved "https://registry.yarnpkg.com/rs-compiler/-/rs-compiler-1.1.8.tgz#8b1bf0745f2b66095ca4a5a6ea87b0d9cd8181c3"
-  integrity sha512-aV5OS74Sn0DtzrZblFyKb3QsrujkYEEPsKkTrcN0BGBU6od9OkLh93FTmvZUk/SeJyhTQaWDr8cULXS9eYUr3g==
+rs-compiler@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/rs-compiler/-/rs-compiler-1.2.0.tgz#e76cb6097bca8033133a2a07d0686aee2378e63c"
+  integrity sha512-vhbz9EYgHSXAQ9W6IlIbHVfynOM4MjzU5mQmI1vKbxGOgbqAB7lhbJrKd5TivUIUAvMzC5c1L5mQgq6jKwesJw==
   dependencies:
     "@babel/core" "^7.4.4"
     "@babel/plugin-proposal-class-properties" "^7.4.4"
@@ -7057,7 +7057,7 @@ rs-compiler@^1.1.8:
     file-loader "^1.1.11"
     html-webpack-include-assets-plugin "^1.0.10"
     html-webpack-plugin "^3.2.0"
-    http-proxy-middleware "^0.19.1"
+    http-proxy-middleware "0.19.1"
     less "^3.9.0"
     less-loader "^4.1.0"
     mini-css-extract-plugin "^0.4.5"

@@ -1,6 +1,6 @@
 {
   "name": "react-starter-kit",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "This is react start kit",
   "author": "jines-z <zhengaojin@live.cn> (https://github.com/jines-z)",
   "scripts": {
@@ -22,6 +22,6 @@
     "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
-    "rs-compiler": "^1.1.8"
+    "rs-compiler": "^1.2.0"
   }
 }
