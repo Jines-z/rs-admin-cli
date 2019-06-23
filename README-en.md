@@ -1,4 +1,4 @@
-![react-starter-kit](https://jines-z.github.io/images/rs_logo.png)
+![react-starter-kit](https://jines-z.github.io/images/rs-admin-cli.png)
 ---------------------------------------------------------------
 [![React](https://img.shields.io/badge/react-^16.8.4-brightgreen.svg?style=flat-square)](https://github.com/facebook/react)
 [![Ant Design](https://img.shields.io/badge/ant--design-^3.8.0-yellowgreen.svg?style=flat-square)](https://github.com/ant-design/ant-design)
@@ -9,24 +9,20 @@
 Preview：[https://jines-z.github.io/react-starter-kit](https://jines-z.github.io/react-starter-kit)
 
 ## Quick Start
-#### Down
-~~~
-git clone https://github.com/jines-z/react-starter-kit.git
-~~~
 
 #### Install
 ~~~
-yarn install
+npm install -g rs-admin-cli
 ~~~
 
-#### Dll
-The first time, you need to packaged the vendor and only run it once. When the vendor changes, it needs to be repackaged.
+#### Init
 ~~~
-npm run dll
+rs init yourProjectName
 ~~~
 
 #### Run
 ~~~
+cd yourProjectName
 npm start
 ~~~
 
@@ -34,10 +30,6 @@ npm start
 ~~~
 npm run build
 ~~~
-
-#### Publish CDN (Recommend)
-
-Change the `publicPath` in "project.config.js" to the static resource address.
 
 ## IE
 You need to downgrade `mobx` to v4.9.2.
@@ -47,6 +39,9 @@ Ie9 does not support `transition` and `animation` in css3, so the animation will
 It does not support IE8 and below.
 
 ## Log
+`2019-06-23`
+-   Upgrade：react-starter-kit -> rs-admin-cli v3.0.0
+
 `2019-05-24`
 -   Upgrade to v2.2
 -   Extract the package file from the local to the npm package and add version detection and updates

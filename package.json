@@ -1,27 +1,32 @@
 {
-  "name": "react-starter-kit",
-  "version": "2.2.2",
-  "description": "This is react start kit",
-  "author": "jines-z <zhengaojin@live.cn> (https://github.com/jines-z)",
-  "scripts": {
-    "start": "cross-env NODE_ENV=development rs-compiler start",
-    "build": "cross-env NODE_ENV=production rs-compiler build",
-    "dll": "cross-env NODE_ENV=production rs-compiler dll"
+  "name": "rs-admin-cli",
+  "version": "3.0.0",
+  "description": "Command line interface for react",
+  "author": "zhengaojin <zhengaojin@live.cn>",
+  "private": false,
+  "bin": {
+    "rs": "./bin/index.js"
   },
+  "keywords": [
+    "react",
+    "react-starter-kit",
+    "cli",
+    "admin",
+    "redux",
+    "mobx"
+  ],
   "license": "MIT",
   "dependencies": {
-    "antd": "3.8.0",
-    "crypto-js": "^3.1.9-1",
-    "flyio": "^0.6.14",
-    "js-cookie": "^2.2.0",
-    "mobx": "^5.9.4",
-    "mobx-react": "^5.4.4",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-loadable": "^5.5.0",
-    "react-router-dom": "^4.3.1"
-  },
-  "devDependencies": {
-    "rs-compiler": "^1.2.0"
+    "chalk": "^2.4.1",
+    "cli-spinners": "^1.3.1",
+    "cliui": "^4.1.0",
+    "clui": "^0.3.6",
+    "commander": "^2.19.0",
+    "download-git-repo": "^1.1.0",
+    "figlet": "^1.2.1",
+    "figures": "^2.0.0",
+    "inquirer": "^6.2.0",
+    "ora": "^3.0.0",
+    "walk": "^2.3.14"
   }
 }

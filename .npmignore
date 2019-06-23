@@ -11,6 +11,8 @@ node_modules
 .project
 .settings
 .tmproj
+.gitignore
+.editorconfig
 *.esproj
 *.sublime-project
 *.sublime-workspace

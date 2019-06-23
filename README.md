@@ -1,4 +1,4 @@
-![react-starter-kit](https://jines-z.github.io/images/rs_logo.png)
+![react-starter-kit](https://jines-z.github.io/images/rs_admin-cli.png)
 ---------------------------------------------------------------
 [![React](https://img.shields.io/badge/react-^16.8.6-brightgreen.svg?style=flat-square)](https://github.com/facebook/react)
 [![Ant Design](https://img.shields.io/badge/ant--design-^3.8.0-yellowgreen.svg?style=flat-square)](https://github.com/ant-design/ant-design)
@@ -9,24 +9,20 @@
 预览：[https://jines-z.github.io/react-starter-kit](https://jines-z.github.io/react-starter-kit)
 
 ## 快速使用
-#### Down
+
+#### 全局安装
 ~~~
-git clone https://github.com/jines-z/react-starter-kit.git
+npm install -g rs-admin-cli
 ~~~
 
-#### Install
+#### 新建
 ~~~
-yarn install
-~~~
-
-#### Dll
-第一次运行时，需要打包 vendor。当 vendor 被改变时，需要重新打包。
-~~~
-npm run dll
+rs init yourProjectName
 ~~~
 
 #### Run
 ~~~
+cd yourProjectName
 npm start
 ~~~
 
@@ -34,10 +30,6 @@ npm start
 ~~~
 npm run build
 ~~~
-
-#### 使用CDN (推荐)
-
-将 project.config.js 内的 `publicPath` 改为静态资源地址。
 
 ## IE
 
@@ -48,6 +40,9 @@ IE9 不支持 CSS3 中的 `transition` 和 `animation`，因此动画会失效�
 不支持 IE8 及以下版本
 
 ## 更新日志
+`2019-06-23`
+-   重构升级：react-starter-kit -> rs-admin-cli v3.0.0
+
 `2019-05-24`
 -   升级到 v2.2
 -   将打包文件从本地抽离成 npm 包，并添加了版本检测与更新
