@@ -31,13 +31,6 @@ npm start
 npm run build
 ~~~
 
-## IE
-You need to downgrade `mobx` to v4.9.2.
-
-Ie9 does not support `transition` and `animation` in css3, so the animation will fail.
-
-It does not support IE8 and below.
-
 ## Log
 `2019-06-23`
 -   Upgrade：react-starter-kit -> rs-admin-cli v3.0.0

@@ -31,14 +31,6 @@ npm start
 npm run build
 ~~~
 
-## IE
-
-若需要兼容 IE，将 `mobx` 的版本降至 v4.9.2。
-
-IE9 不支持 CSS3 中的 `transition` 和 `animation`，因此动画会失效。
-
-不支持 IE8 及以下版本
-
 ## 更新日志
 `2019-06-23`
 -   重构升级：react-starter-kit -> rs-admin-cli v3.0.0
