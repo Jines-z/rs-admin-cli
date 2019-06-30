@@ -6,7 +6,7 @@
 
 简体中文 | [English](https://github.com/jines-z/react-starter-kit/blob/master/README-en.md)
 
-预览：[https://jines-z.github.io/react-starter-kit](https://jines-z.github.io/react-starter-kit)
+预览：[Mobx](https://jines-z.github.io/rs-mobx) [Redux](https://jines-z.github.io/rs-redux)
 
 ## 快速使用
 
