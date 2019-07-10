@@ -6,7 +6,7 @@
 
 [简体中文](https://github.com/jines-z/react-starter-kit) | English
 
-Preview：[Mobx](https://jines-z.github.io/rs-mobx) [Redux](https://jines-z.github.io/rs-redux) 
+Preview：[Mobx](https://jines-z.github.io/rs-mobx) [Redux](https://jines-z.github.io/rs-redux)
 
 ## Quick Start
 
