@@ -32,6 +32,13 @@ npm run build
 ~~~
 
 ## Log
+`2019-08-30`
+-   Optimize global loading presentation logic
+
+    -   When request is initiated, the loading is automatically rendered
+    -   You can also manually control the loading in other cases
+-   Add [slcss](https://github.com/Jines-z/slcss), reduce the amount of css code
+
 `2019-06-23`
 -   Upgrade：react-starter-kit -> rs-admin-cli v3.0.0
 

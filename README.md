@@ -32,6 +32,13 @@ npm run build
 ~~~
 
 ## 更新日志
+`2019-08-30`
+-   优化全局 loading 展示逻辑
+
+    -   发起 request 时，会自动渲染 loading
+    -   也可以在其他情况下手动控制 loading
+-   添加 [slcss](https://github.com/Jines-z/slcss)，减少 css 代码量
+
 `2019-06-23`
 -   重构升级：react-starter-kit -> rs-admin-cli v3.0.0
 
