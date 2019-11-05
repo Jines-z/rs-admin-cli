@@ -6,6 +6,18 @@
 
 [简体中文](https://github.com/Jines-z/rs-admin-cli) | English
 
+## Overview
+`rs-admin-cli` is a scaffolding that is rapidly developed based on react and provides:
+
+-   Interactive project scaffolding via `rs-admin-cli`。
+-   Start zero-configuration prototyping quickly with `rs-compiler`。
+-   Includes three solutions:
+
+    -   react + redux
+    -   react + mobx
+    -   react + mobx + typescript
+-   Rich project configuration to meet different needs。
+
 ## Quick Start
 
 #### Install🔥
@@ -29,7 +41,7 @@ npm start
 npm run build
 ~~~
 
-#### Preview
+## Preview
 ![rs-admin-cli](https://jines-z.github.io/images/rs-admin-cli.gif)
 
 Address: [Mobx](https://jines-z.github.io/rs-mobx)  [Redux](https://jines-z.github.io/rs-redux)
