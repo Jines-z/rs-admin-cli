@@ -6,7 +6,7 @@ const Div      = require('../lib/Div')
 const Install  = require('../lib/Install')
 const Dll      = require('../lib/Dll')
 const Inquirer = require('../lib/Inquirer')
-const { readDir }   = require('../lib/Utils')
+const Utils    = require('../lib/Utils')
 
 const Download = async (dir) => {
     await Banner('rs admin cli')
@@ -17,9 +17,9 @@ const Download = async (dir) => {
         if (!err) {
             Spinner.stop()
             console.log(`# Download completed! \n`)
-            const fileNames = await readDir(dir)
+            const fileNames = await Utils.readDir(dir)
             Div(fileNames)
-            console.log(`# Preparatory work ... \n`)
+            console.log(`# Preparatory install ... \n`)
             await Install(dir, answers.command)
             await Dll(dir)
             console.log('\n')

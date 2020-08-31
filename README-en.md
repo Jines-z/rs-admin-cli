@@ -16,6 +16,7 @@
     -   react + redux
     -   react + mobx
     -   react + mobx + typescript
+    -   react + mobx + typescript + electron
 -   Rich project configuration to meet different needs。
 
 ## Quick Start

@@ -16,6 +16,7 @@
     -   react + redux
     -   react + mobx
     -   react + mobx + typescript
+    -   react + mobx + typescript + electron
 -   具有丰富的项目配置项，可满足不同的需求。
     
 ## 快速使用
