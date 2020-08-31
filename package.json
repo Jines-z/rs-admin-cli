@@ -1,6 +1,6 @@
 {
   "name": "rs-admin-cli",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "Command line interface for react",
   "author": "zhengaojin <zhengaojin@live.cn>",
   "private": false,
