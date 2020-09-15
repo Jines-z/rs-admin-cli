@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const program     = require('commander')
-const Download    = require('../packages/Download')
+const download    = require('../packages/Download')
 const { version } = require('../package')
 
 program
@@ -9,7 +9,7 @@ program
     .command('init <name>')
     .description('Set your project name')
     .action(function (dir, cmd) {
-        Download(dir)
+        download(dir)
     })
 
 program.parse(process.argv)

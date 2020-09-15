@@ -1,5 +1,5 @@
-const download = require('download-git-repo')
-const chalk    = require('chalk')
+const Download = require('download-git-repo')
+const Chalk    = require('chalk')
 const Spinner  = require('../lib/Spinner')
 const Banner   = require('../lib/Banner')
 const Div      = require('../lib/Div')
@@ -13,7 +13,7 @@ const Download = async (dir) => {
     const answers = await Inquirer()
     process.stdout.write('\033c')
     Spinner.start()
-    download(`github:Jines-z/rs-template-${answers.state}`, `${dir}/`, async function (err) {
+    Download(`github:Jines-z/rs-template-${answers.state}`, `${dir}/`, async function (err) {
         if (!err) {
             Spinner.stop()
             console.log(`# Download completed! \n`)
@@ -25,11 +25,11 @@ const Download = async (dir) => {
             console.log('\n')
             console.log(`## Successfully created project ${dir}`)
             console.log(`## Get started with the following commands:\n`)
-            console.log(` ${chalk.gray('$')} ${chalk.cyan(`cd ${dir}`)}`)
-            console.log(` ${chalk.gray('$')} ${chalk.cyan(`npm start`)}\n`)
+            console.log(` ${Chalk.gray('$')} ${Chalk.cyan(`cd ${dir}`)}`)
+            console.log(` ${Chalk.gray('$')} ${Chalk.cyan(`npm start`)}\n`)
         } else {
             Spinner.stop()
-            console.log(chalk.red('\n Download template failed ! \n'))
+            console.log(Chalk.red('\n Download template failed ! \n'))
             process.exit(0)
         }
     })
