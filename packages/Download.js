@@ -1,4 +1,4 @@
-const Download = require('download-git-repo')
+const GitRepo  = require('download-git-repo')
 const Chalk    = require('chalk')
 const Spinner  = require('../lib/Spinner')
 const Banner   = require('../lib/Banner')
@@ -13,7 +13,7 @@ const Download = async (dir) => {
     const answers = await Inquirer()
     process.stdout.write('\033c')
     Spinner.start()
-    Download(`github:Jines-z/rs-template-${answers.state}`, `${dir}/`, async function (err) {
+    GitRepo(`github:Jines-z/rs-template-${answers.state}`, `${dir}/`, async function (err) {
         if (!err) {
             Spinner.stop()
             console.log(`# Download completed! \n`)
